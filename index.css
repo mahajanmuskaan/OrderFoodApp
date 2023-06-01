@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 8px; */
+    background-color: black;
+}
+
+.logoheader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+    text-decoration: none;
+}
+
+#logo {
+    padding: 3px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.logoheader>h1 {
+    color: white;
+    padding: 5px;
+}
+
+.nav-items>ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-items>ul>li {
+    color: white;
+    font-size: 1.3rem;
+    margin: 5px;
+    padding: 15px;
+}
+
+.food-images{
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.food-images .food-image-list{
+    width: 400px;
+    height: 300px;
+}
+
+#food-quote{
+    font-size: 2rem;
+    font-style: italic;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 5px;
+    padding: auto;
+    text-align: center;
+}
+
+#author{
+    text-align: end;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    font-style: italic;
+    margin: 5px;
+    padding: 5px;
+}
+
+.pitcure-carousel{
+    width: 60%;
+    margin: 50px auto;
+}
+
