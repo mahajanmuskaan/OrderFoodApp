@@ -7,18 +7,25 @@ import Food5 from '../../images/carousel-item2.jpg';
 import Food6 from '../../images/carousel-item5.jpg';
 import Food7 from '../../images/carousel-item4.jpg';
 
+import SearchComponent from './SearchComponent';
+
 // Body Component - to make a Carousel and Food Gallery
 
-const MainBodyComponent = () => (
-    <>
-        <div className="food-images">
-            <img className="food-image-list" src={Food1} alt="food" />
-            <img className="food-image-list" src={Food2} alt="food" />
-            <img className="food-image-list" src={Food3} alt="food" />
-        </div>
-        <h1 id="food-quote">“One cannot think well, love well, sleep well, if one has not dined well.”</h1>
-        <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
-        <div id="carouselExample" class="carousel slide pitcure-carousel">
+const MainBodyComponent = () => {
+    return (
+        <>
+            <div className="body-section">
+                <div className="food-images">
+                    <img className="food-image-list" src={Food1} alt="food" />
+                    <img className="food-image-list" src={Food2} alt="food" />
+                    <img className="food-image-list" src={Food3} alt="food" />
+                    <img className="food-image-list" src={Food5} alt="food" />
+                </div>
+                <h1 id="food-quote">“One cannot think well, love well, sleep well, if one has not dined well.”</h1>
+                <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
+            </div>
+            <SearchComponent />
+            {/* <div id="carouselExample" class="carousel slide pitcure-carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src={Food4} class="d-block w-100" alt="..." />
@@ -41,9 +48,10 @@ const MainBodyComponent = () => (
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-        </div>
-    </>
+        </div> */}
+        </>
 
-);
+    )
+};
 
 export default MainBodyComponent;
