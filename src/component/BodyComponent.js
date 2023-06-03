@@ -6,9 +6,6 @@ import Food5 from '../../images/carousel-item2.jpg';
 import Restaurant from './Restaurant'
 import { restaurantList } from '../config.js';
 
-
-
-
 // Body Component
 
 const MainBodyComponent = () => {
@@ -35,11 +32,11 @@ const MainBodyComponent = () => {
         if (searchText !== '') {
             const filteredData = filterdata(searchText, restaurantList);
             setRestaurants(filteredData);
-            setNoResults(filteredData.length === 0); // Set noResults based on search results
+            setNoResults(filteredData.length === 0); // Set noResults based on search results. if (filteredData.length === 0)-> true, then no results are there else, results are there.
         }
         else {
             setRestaurants(restaurantList);
-            setNoResults(false); // Reset noResults
+            setNoResults(false); // Reset noResults // Incase no text is given in search box, so all restaurants should be shown by default.
         }
     }
 
