@@ -88,9 +88,10 @@
     padding: 6px;
 }
 
-.pitcure-carousel {
-    width: 60%;
-    margin: 50px auto;
+.restaurant-body-section {
+    background-image: url('./images/website-background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .search-section {
@@ -99,7 +100,7 @@
 }
 
 .search-box {
-    margin: 20px;
+    margin: 25px;
     padding: 10px;
 }
 
@@ -117,33 +118,49 @@
     min-width: 7%;
     border-radius: 8px;
 }
-.restaurant-list{
+
+.restaurant-list {
     margin: 10px;
     display: grid;
+    color: white;
 }
-.restaurant-list-cards{
+
+.restaurant-list h1{
+    text-align: end;
+}
+
+.restaurant-list-cards {
     display: flex;
-    justify-content: normal;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 0.5rem;
 }
-.restaurant-list-card{
-    width:300px;
+
+.restaurant-list-card {
+    width: 300px;
     height: 330px;
     margin: 0.5rem;
     padding: 0.5rem;
-    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgba(220, 20, 60, 0.952);
+}
+
+.restaurant-img {
+    max-width: 100%;
     border-radius: 15px;
 }
 
-.restaurant-img{
-    max-width: 100%;
-}
-.restaurant-name{
+.restaurant-name {
     font-size: 1.2rem;
     font-weight: bold;
 }
-.restaurant-name,.restaurant-cuisines,.restaurant-costfor{
-    margin: 2px;
-    padding: 2px;
+
+.restaurant-details {
+    margin: 10px;
+}
+
+.restaurant-name,
+.restaurant-cuisines,
+.restaurant-costfor {
+    margin: 5px;
 }
