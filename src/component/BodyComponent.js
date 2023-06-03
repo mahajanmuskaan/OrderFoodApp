@@ -7,17 +7,38 @@ import Restaurant from './Restaurant'
 import { restaurantList } from '../config.js';
 
 
-// Body Component - to make a Carousel and Food Gallery
+
+
+// Body Component
 
 const MainBodyComponent = () => {
     // Declare state variable searchText and its setter function setSearchText
     const [searchText, setSearchText] = useState('');
+    const [restaurants, setRestaurants] = useState(restaurantList)
 
     // Event handler for input change
     const handleChange = (e) => {
         // Update searchText with the new value entered by the user
         setSearchText(e.target.value);
     };
+
+    function filterdata(searchText, restaurantList) {
+        return (restaurantList.filter(
+            (restaurant) => {
+                return restaurant.data.name.toLowerCase().includes(searchText.toLowerCase());
+            }
+        ));
+    }
+    // Restaurant Search
+    function searchData(searchText, restaurantList) {
+        if (searchText !== '') {
+            const filteredData = filterdata(searchText, restaurantList);
+            setRestaurants(filteredData);
+        }
+        else {
+            setRestaurants(restaurantList);
+        }
+    }
     return (
         <>
             <div className="body-section">
@@ -30,7 +51,8 @@ const MainBodyComponent = () => {
                 <h1 id="food-quote">“One cannot think well, love well, sleep well, if one has not dined well.”</h1>
                 <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
             </div>
-            {/* <SearchComponent /> */}
+
+            {/* Search Bar */}
             <div className="search-section">
                 <div className="search-box">
                     <input
@@ -40,7 +62,9 @@ const MainBodyComponent = () => {
                         placeholder="Search for restaurant"
                         onChange={handleChange}
                     />
-                    <button className="search-box-btn">
+                    <button className="search-box-btn" onClick={() =>
+                        searchData(searchText, restaurantList)
+                    }>
                         Search
                     </button>
                 </div>
@@ -50,7 +74,7 @@ const MainBodyComponent = () => {
             <div className="restaurant-list">
                 <h2>Find Restaurants here..</h2>
                 <div className="restaurant-list-cards">
-                    {restaurantList.map((restaurant) => {
+                    {restaurants.map((restaurant) => {
                         return <Restaurant {...restaurant.data} key={restaurant.data.id} />;
                     })}
 

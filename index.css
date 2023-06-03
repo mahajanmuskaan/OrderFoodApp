@@ -123,15 +123,13 @@
 }
 .restaurant-list-cards{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: normal;
     flex-wrap: wrap;
     margin: 0.5rem;
 }
 .restaurant-list-card{
     width:300px;
-    height: 325px;
-    align-self: center;
+    height: 330px;
     margin: 0.5rem;
     padding: 0.5rem;
     border: 1px solid black;
@@ -141,7 +139,11 @@
 .restaurant-img{
     max-width: 100%;
 }
+.restaurant-name{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 .restaurant-name,.restaurant-cuisines,.restaurant-costfor{
-    margin: 3px;
-    padding: 3px;
+    margin: 2px;
+    padding: 2px;
 }
