@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Food1 from '../../images/Foodimage1.jpg';
 import Food2 from '../../images/Foodimage2.jpg';
 import Food3 from '../../images/Foodimage3.jpg';
-import Food4 from '../../images/carousel-item1.jpg';
 import Food5 from '../../images/carousel-item2.jpg';
-import Food6 from '../../images/carousel-item5.jpg';
-import Food7 from '../../images/carousel-item4.jpg';
+import Restaurant from './Restaurant'
+import { restaurantList } from '../config.js';
 
-import SearchComponent from './SearchComponent';
 
 // Body Component - to make a Carousel and Food Gallery
 
 const MainBodyComponent = () => {
+    // Declare state variable searchText and its setter function setSearchText
+    const [searchText, setSearchText] = useState('');
+
+    // Event handler for input change
+    const handleChange = (e) => {
+        // Update searchText with the new value entered by the user
+        setSearchText(e.target.value);
+    };
     return (
         <>
             <div className="body-section">
@@ -24,31 +30,32 @@ const MainBodyComponent = () => {
                 <h1 id="food-quote">“One cannot think well, love well, sleep well, if one has not dined well.”</h1>
                 <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
             </div>
-            <SearchComponent />
-            {/* <div id="carouselExample" class="carousel slide pitcure-carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src={Food4} class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src={Food5} class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src={Food6} class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src={Food7} class="d-block w-100" alt="..." />
+            {/* <SearchComponent /> */}
+            <div className="search-section">
+                <div className="search-box">
+                    <input
+                        type="text"
+                        className="search-box-field"
+                        value={searchText}
+                        placeholder="Search for restaurant"
+                        onChange={handleChange}
+                    />
+                    <button className="search-box-btn">
+                        Search
+                    </button>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div> */}
+
+            {/* RestaurantList */}
+            <div className="restaurant-list">
+                <h2>Find Restaurants here..</h2>
+                <div className="restaurant-list-cards">
+                    {restaurantList.map((restaurant) => {
+                        return <Restaurant {...restaurant.data} key={restaurant.data.id} />;
+                    })}
+
+                </div>
+            </div>
         </>
 
     )
