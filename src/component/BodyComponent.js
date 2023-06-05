@@ -53,6 +53,7 @@ const MainBodyComponent = () => {
                 <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
             </div>
             <div className="restaurant-body-section">
+            <h2>Find Restaurants here...</h2>
                 {/* Search Bar */}
                 <div className="search-section">
                     <div className="search-box">
@@ -73,8 +74,7 @@ const MainBodyComponent = () => {
 
                 {/* RestaurantList */}
                 <div className="restaurant-list">
-                    <h2>Find Restaurants here...</h2>
-                    {noResults ? (<h1>No restaurants found..</h1>) :
+                    {noResults ? (<h1>Ooops!! No restaurants found..</h1>) :
                         (
                             <div className="restaurant-list-cards">
                                 {restaurants.map((restaurant) => (

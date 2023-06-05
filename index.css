@@ -3,18 +3,21 @@
     padding: 0;
 }
 
+body {
+    background-color: #FFB84C;
+}
+
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background-color: black;
 }
 
 .logoheader {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 3.5px;
+    margin: 4px;
     text-decoration: none;
 }
 
@@ -26,33 +29,44 @@
 }
 
 .logoheader>h1 {
-    font-size: 2rem;
-    color: white;
+    color: black;
+    font-size: 1.5rem;
     padding: 3px;
+    font-family: cursive;
+    font-weight: 600;
 }
 
 .nav-items>ul {
     display: flex;
     list-style-type: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-items>ul>li {
-    color: white;
-    font-size: 1.3rem;
-    margin: 4px;
-    padding: 12px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 3px;
+    padding: 7px;
+    font-weight: 600;
+}
+
+.nav-items img{
+    width: 25px;
+    padding-right: 5px;
 }
 
 .nav-items>ul>li:hover {
-    color: crimson;
-    border-bottom: 0.5px solid white;
+    color: white;
+    border-bottom: 0.5px solid black;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .body-section {
-    background-color: crimson;
-    /* margin: 10px; */
+    background-color: rgba(220, 20, 60, 0.966);
+    padding: 5px;
 }
 
 .body-section>.food-images {
@@ -82,25 +96,37 @@
     color: white;
     text-align: end;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 1rem;
     font-style: italic;
+    font-size: 1rem;
     margin: 3px;
     padding: 6px;
 }
 
 .restaurant-body-section {
-    background-image: url('./images/website-background2.jpg');
+    /* background-image: url('./images/food-website.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed; */
+    padding: 10px;
+}
+
+.restaurant-body-section h2 {
+    padding: 10px;
+    text-align: left;
+    color: black;
+    font-size: 2.5rem;
+    font-family: cursive;
+    font-weight: 500;
 }
 
 .search-section {
-    margin: 20px;
-    text-align: end;
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
 }
 
 .search-box {
-    margin: 25px;
+    margin: 10px;
     padding: 10px;
 }
 
@@ -115,8 +141,11 @@
 }
 
 .search-box-btn {
+    background-color: crimson;
+    color: white;
     min-width: 7%;
     border-radius: 8px;
+    border: 0;
 }
 
 .restaurant-list {
@@ -125,8 +154,10 @@
     color: white;
 }
 
-.restaurant-list h1{
-    text-align: end;
+.restaurant-list h1 {
+    text-align: center;
+    color: black;
+    font-size: 2.8rem;
 }
 
 .restaurant-list-cards {
