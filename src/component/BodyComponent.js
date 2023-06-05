@@ -115,6 +115,7 @@ const MainBodyComponent = () => {
                         </ul>
                     </div>
                 </div>
+                <hr id="filter-section-line"></hr>
 
                 {/* RestaurantList */}
                 <div className="restaurant-list">
