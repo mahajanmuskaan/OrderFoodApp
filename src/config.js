@@ -24,7 +24,7 @@ export const restaurantList = [
             area: "Anand Vihar Colony",
             totalRatingsString: "5000+ ratings",
             cloudinaryImageId: "w0fc1sr85flnqzb7qhma",
-            cuisines: ["South Indian", "North Indian","Snacks", "Biryani","Mughlai","Fast Food","Mexican","Japanese"],
+            cuisines: ["South Indian", "North Indian","Snacks", "Biryani"],
             tags: [],
             costForTwo: 30000,
             costForTwoString: "₹300 FOR TWO",

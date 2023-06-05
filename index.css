@@ -58,6 +58,7 @@
     padding-right: 5px;
 }
 
+
 .nav-items>ul>li:hover {
     color: crimson;
     border-bottom: 0.5px solid black;
@@ -202,17 +203,55 @@
     text-align: center;
 }
 
+.restaurant-name-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2px;
+}
+
 .restaurant-rating,
-.restaurant-cuisines,
-.restaurant-costfor {
+.restaurant-cuisines {
     margin: 4px;
     font-size: 1rem;
 }
 
-.restaurant-costfor {
+.restaurant-costfor,
+.restaurant-time {
     font-size: 0.8rem;
+    margin: 3px;
 }
 
 .restaurant-list-card:hover {
     transform: scale(1.05);
+}
+
+.filters_options>ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.filters_options>ul>li {
+    font-size: 1rem;
+    margin: 3px;
+    padding: 3px;
+}
+
+.filters_options>ul>li:hover {
+    color: crimson;
+    border-bottom: 0.5px solid black;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    font-size: 1.2rem;
+}
+
+#filter_by,
+#reset_all {
+    color: crimson;
+    font-size: 1.3rem;
+    font-weight: 500;
 }

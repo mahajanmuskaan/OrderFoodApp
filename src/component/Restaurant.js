@@ -1,5 +1,4 @@
 import { IMG_CDN } from "../config";
-import { rupee } from '../../images/rupee.png'
 
 const RestaurantComponent = ({ cloudinaryImageId, name, cuisines, costForTwoString, avgRating, deliveryTime }) => {
     return (
