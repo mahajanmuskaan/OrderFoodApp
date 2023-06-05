@@ -13,6 +13,7 @@ const MainBodyComponent = () => {
     const [searchText, setSearchText] = useState('');
     const [restaurants, setRestaurants] = useState(restaurantList);
     const [noResults, setNoResults] = useState(false); // New state variable
+    const [filterBy, setFilterBy] = useState('');
 
     // Event handler for input change
     const handleChange = (e) => {
@@ -20,11 +21,11 @@ const MainBodyComponent = () => {
         setSearchText(e.target.value);
     };
 
+    //Restaurant Search - Search based on Restaurant Name
     function filterdata(searchText, restaurantList) {
-        return (restaurantList.filter(
-            (restaurant) => {
-                return restaurant.data.name.toLowerCase().includes(searchText.toLowerCase());
-            }
+        return (restaurantList.filter((restaurant) => {
+            return restaurant.data.name.toLowerCase().includes(searchText.toLowerCase());
+        }
         ));
     }
     // Restaurant Search
@@ -37,6 +38,27 @@ const MainBodyComponent = () => {
         else {
             setRestaurants(restaurantList);
             setNoResults(false); // Reset noResults // Incase no text is given in search box, so all restaurants should be shown by default.
+        }
+    }
+
+    // FilterOption- Search based on cuisines
+    function filterOptions(filterBy) {
+        return restaurantList.filter((restaurant) => {
+            return restaurant.data.cuisines.some((cuisine) =>
+                cuisine.toLowerCase().includes(filterBy.toLowerCase())
+            );
+        });
+    }
+    function filteredOption(filterBy) {
+        if (filterBy !== '') {
+            const filteredOptionList = filterOptions(filterBy);
+            setFilterBy(filterBy);
+            setRestaurants(filteredOptionList);
+            setNoResults(filteredOptionList.length === 0);
+        } else {
+            setFilterBy('');
+            setRestaurants(restaurantList);
+            setNoResults(false);
         }
     }
 
@@ -53,7 +75,7 @@ const MainBodyComponent = () => {
                 <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
             </div>
             <div className="restaurant-body-section">
-            <h2>Find Restaurants here...</h2>
+                <h2>Find Restaurants here...</h2>
                 {/* Search Bar */}
                 <div className="search-section">
                     <div className="search-box">
@@ -69,6 +91,28 @@ const MainBodyComponent = () => {
                         }>
                             Search
                         </button>
+                    </div>
+                </div>
+
+                {/* Filters and Sort Options */}
+                <div className="filters_sort">
+                    <div className="filters_options">
+                        <ul>
+                            <li id="filter_by">Filter by</li>
+                            <li onClick={() => filteredOption('South Indian')}>South Indian</li>|
+                            <li onClick={() => filteredOption('North Indian')}>North Indian</li>|
+                            <li onClick={() => filteredOption('Fast Food')}>Fast Food</li>|
+                            <li onClick={() => filteredOption('Chinese')}>Chinese</li>|
+                            <li onClick={() => filteredOption('Italian')}>Italian</li>|
+                            <li onClick={() => filteredOption('Continental')}>Continental</li>|
+                            <li onClick={() => filteredOption('Mughlai')}>Mughlai</li>|
+                            <li onClick={() => filteredOption('Chinese')}>Chinese</li>|
+                            <li onClick={() => filteredOption('Afghani')}>Afghani</li>|
+                            <li onClick={() => filteredOption('Salads')}>Salads</li>|
+                            <li onClick={() => filteredOption('Beverages')}>Beverages</li>|
+                            <li onClick={() => filteredOption('Bakery')}>Bakery</li>
+                            <li id="reset_all" onClick={() => filteredOption('')}>Reset Filter</li>
+                        </ul>
                     </div>
                 </div>
 
