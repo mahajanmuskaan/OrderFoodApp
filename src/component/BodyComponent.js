@@ -14,7 +14,7 @@ const MainBodyComponent = () => {
 
     //the restaurants state always contains the filtered data, while originalData retains the original data fetched from the API for each new filtering operation.
     const [restaurants, setRestaurants] = useState([]);
-    const [originalrestaurants, setOriginalRestaurants] = useState([]);
+    const [originalrestaurants, setOriginalRestaurants] = useState(['']);
 
     const [noResults, setNoResults] = useState(false); // New state variable
     const [filterBy, setFilterBy] = useState('');
@@ -66,6 +66,7 @@ const MainBodyComponent = () => {
         }
     }
 
+   
     // useEffect Hook Usage to make a API call- to fetch Real data from swiggy API.
     useEffect(() => {
         // Fetch Restaurant Data
@@ -74,21 +75,26 @@ const MainBodyComponent = () => {
     }, []);
     async function getRestaurants() {
         // To handle errors
-        const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.6314253&lng=74.84340259999999&page_type=DESKTOP_WEB_LISTING", {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-            },
-        });
-        if (response.ok) {
-            const json_data = await response.json();
-            const fetchedAPIData = json_data?.data?.cards[2]?.data?.data?.cards;
-            console.log(fetchedAPIData);
-            setOriginalRestaurants(fetchedAPIData);//original data fetched from the Swiggy API
-            setRestaurants(fetchedAPIData);
+        try {
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.6314253&lng=74.84340259999999&page_type=DESKTOP_WEB_LISTING", {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+            if (response.ok) {
+                const json_data = await response.json();
+                const fetchedAPIData = json_data?.data?.cards[2]?.data?.data?.cards;
+                console.log(fetchedAPIData);
+                setOriginalRestaurants(fetchedAPIData);//original data fetched from the Swiggy API
+                setRestaurants(fetchedAPIData);
+            }
+            else {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
         }
-        else {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        catch (e) {
+            console.error(e);
         }
     }
 
@@ -106,7 +112,7 @@ const MainBodyComponent = () => {
             </div>
             <div className="restaurant-body-section">
                 <h2>Find Restaurants here...</h2>
-                
+
                 {/* Search Bar */}
                 <div className="search-section">
                     <div className="search-box">

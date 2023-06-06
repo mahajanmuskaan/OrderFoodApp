@@ -84,15 +84,15 @@
     margin-bottom: 1rem;
 }
 
-.food-image-list:hover{
+.food-image-list:hover {
     cursor: pointer;
-    transform:scale(1.1);
+    transform: scale(1.1);
     box-shadow: 0 0 2px 2px white;
     flex-shrink: 1;
-    -webkit-transform:scale(1.1);
-    -moz-transform:scale(1.1);
-    -ms-transform:scale(1.1);
-    -o-transform:scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 #food-quote {
@@ -270,11 +270,11 @@
     font-weight: 500;
 }
 
-#filter-section-line{
+#filter-section-line {
     margin: 2rem;
 }
 
-.quick_menu h6{
+.quick_menu h6 {
     text-align: center;
     margin: 1px;
 }
