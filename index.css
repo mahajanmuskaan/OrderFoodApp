@@ -222,6 +222,13 @@
     -o-border-radius: 10px;
 }
 
+.no-data-img {
+    margin: 20px;
+    max-width: 100%;
+    min-height: 100%;
+    text-align: center;
+}
+
 .restaurant-list-card {
     /*height: 100%;
     */
@@ -292,6 +299,7 @@
 
 .filters_options>ul {
     display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
     justify-content: space-evenly;
     align-items: center;

@@ -6,6 +6,7 @@ import cart from '../../images/grocery-store.png';
 import enter from '../../images/enter.png';
 import logout from '../../images/logout.png';
 
+
 // Title with Logo Field
 const style = {
     textDecoration: 'none'

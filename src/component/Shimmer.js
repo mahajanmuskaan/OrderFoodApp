@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import noData from '../../images/No-data-error.png';
 
 const ShimmerUI = () => {
     const [showMessage, setShowMessage] = useState(false);
@@ -23,7 +24,11 @@ const ShimmerUI = () => {
                         <hr></hr>
                     </div>
 
-                </div>) : (<h2>Ooops!! No restaurants found..</h2>)}
+                </div>) : (
+                    <div className='no-data-img'>
+                        <img src={noData} />
+                    </div>
+                )}
         </>
     )
 }
