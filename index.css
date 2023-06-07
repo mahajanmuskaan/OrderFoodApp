@@ -172,6 +172,53 @@
     margin: 0.5rem;
 }
 
+.shimmer-effect {
+    text-align: center;
+    margin: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #f6f7f8 0%, #e9ebee 50%, #fafbfd 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    -webkit-animation: shimmer 0.8s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.shimmer-effect .restaurant-card {
+    /*height: 100%;
+    */
+    min-width: 20%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 0.2px solid grey;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+}
+
+.shimmer-effect .restaurant-img {
+    border: 0.1px solid grey;
+    max-width: 200px;
+    margin: 8px;
+}
+
 .restaurant-list-card {
     /*height: 100%;
     */
@@ -183,10 +230,10 @@
     flex-direction: column;
     position: relative;
     transition: transform 0.3s ease;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
 }
 
 .restaurant-img {

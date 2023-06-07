@@ -4,11 +4,12 @@ import Food2 from '../../images/Foodimage2.jpg';
 import Food3 from '../../images/Foodimage3.jpg';
 import Food5 from '../../images/carousel-item2.jpg';
 import Restaurant from './Restaurant'
+import ShimmerUI from "./Shimmer";
 //import { restaurantList } from '../config.js';
 
 // Body Component
 
-const MainBodyComponent = () => {
+export const MainBodyComponent = () => {
     // Declare state variable searchText and its setter function setSearchText
     const [searchText, setSearchText] = useState('');
 
@@ -16,7 +17,6 @@ const MainBodyComponent = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [originalrestaurants, setOriginalRestaurants] = useState(['']);
 
-    const [noResults, setNoResults] = useState(false); // New state variable
     const [filterBy, setFilterBy] = useState('');
 
     // Event handler for input change
@@ -37,11 +37,9 @@ const MainBodyComponent = () => {
         if (searchText !== '') {
             const filteredData = filterdata(searchText, originalrestaurants);
             setRestaurants(filteredData);
-            setNoResults(filteredData.length === 0); // Set noResults based on search results. if (filteredData.length === 0)-> true, then no results are there else, results are there.
         }
         else {
             setRestaurants(originalrestaurants);
-            setNoResults(false); // Reset noResults // Incase no text is given in search box, so all restaurants should be shown by default.
         }
     }
 
@@ -58,15 +56,13 @@ const MainBodyComponent = () => {
             const filteredOptionList = filterOptions(filterBy);
             setFilterBy(filterBy);
             setRestaurants(filteredOptionList);
-            setNoResults(filteredOptionList.length === 0);
         } else {
             setFilterBy('');
             setRestaurants(originalrestaurants);
-            setNoResults(false);
         }
     }
 
-   
+
     // useEffect Hook Usage to make a API call- to fetch Real data from swiggy API.
     useEffect(() => {
         // Fetch Restaurant Data
@@ -156,17 +152,23 @@ const MainBodyComponent = () => {
                 <hr id="filter-section-line"></hr>
 
                 {/* RestaurantList */}
-                <div className="restaurant-list">
-                    {noResults ? (<h1>Ooops!! No restaurants found..</h1>) :
-                        (
-                            <div className="restaurant-list-cards">
-                                {restaurants.map((restaurant) => (
-                                    <Restaurant {...restaurant.data} key={restaurant.data.id} />
-                                ))}
-                            </div>
-                        )
-                    }
-                </div>
+
+                {/* // Conditional Rendering
+                /**
+                 * If my restaurants array is empty => it should load Shimmer UI.
+                 * or
+                 * If my restaurants has data => it should load Real time data from API.
+                 *
+                 * This can be acheived using ternary operator..
+                 */}
+                {(restaurants.length === 0) ? (< ShimmerUI restaurants={restaurants} />) :
+                    (<div className="restaurant-list">
+                        <div className="restaurant-list-cards">
+                            {restaurants.map((restaurant) => (
+                                <Restaurant {...restaurant.data} key={restaurant.data.id} />
+                            ))}
+                        </div>
+                    </div>)}
             </div>
         </>
 
