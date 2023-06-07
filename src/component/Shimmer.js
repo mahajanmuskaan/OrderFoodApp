@@ -16,11 +16,21 @@ const ShimmerUI = () => {
                 (<div className='shimmer-effect'>
                     <h3>Fetching your nearby restaurants...</h3>
                     <h4>Here you go!!</h4>
-                    <div className="restaurant-card">
-                        <div className="restaurant-img"></div>
-                        <hr></hr>
-                        <hr></hr>
+                    <div className="restaurant-cards">
+                        <div className="restaurant-card">
+                            <div className="restaurant-img"></div>
+                            <hr></hr>
+                            <div className="restaurant-name-details"></div>
+                            <hr></hr>
+                        </div>
+                        <div className="restaurant-card">
+                            <div className="restaurant-img"></div>
+                            <hr></hr>
+                            <div className="restaurant-name-details"></div>
+                            <hr></hr>
+                        </div>
                     </div>
+
                 </div>) : (<h2>Ooops!! No restaurants found..</h2>)}
         </>
     )

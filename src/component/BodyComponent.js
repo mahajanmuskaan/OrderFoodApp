@@ -10,6 +10,16 @@ import ShimmerUI from "./Shimmer";
 // Body Component
 
 export const MainBodyComponent = () => {
+
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShow(true);
+        }, 2000)
+
+    }, []);
+
     // Declare state variable searchText and its setter function setSearchText
     const [searchText, setSearchText] = useState('');
 
