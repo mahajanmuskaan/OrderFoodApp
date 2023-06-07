@@ -1,25 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Food1 from '../../images/Foodimage1.jpg';
-import Food2 from '../../images/Foodimage2.jpg';
-import Food3 from '../../images/Foodimage3.jpg';
-import Food5 from '../../images/carousel-item2.jpg';
 import Restaurant from './Restaurant'
 import ShimmerUI from "./Shimmer";
+
 //import { restaurantList } from '../config.js';
 
 // Body Component
 
 export const MainBodyComponent = () => {
-
-    const [show, setShow] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setShow(true);
-        }, 2000)
-
-    }, []);
-
     // Declare state variable searchText and its setter function setSearchText
     const [searchText, setSearchText] = useState('');
 
@@ -106,16 +93,6 @@ export const MainBodyComponent = () => {
 
     return (
         <>
-            <div className="body-section">
-                <div className="food-images">
-                    <img className="food-image-list" src={Food1} alt="food" />
-                    <img className="food-image-list" src={Food2} alt="food" />
-                    <img className="food-image-list" src={Food3} alt="food" />
-                    <img className="food-image-list" src={Food5} alt="food" />
-                </div>
-                <h1 id="food-quote">“One cannot think well, love well, sleep well, if one has not dined well.”</h1>
-                <h4 id="author">― Virginia Woolf, A Room of One's Own</h4>
-            </div>
             <div className="restaurant-body-section">
                 <h2>Find Restaurants here...</h2>
 
@@ -161,7 +138,7 @@ export const MainBodyComponent = () => {
                 </div>
                 <hr id="filter-section-line"></hr>
 
-                {/* RestaurantList */}
+                {/* RestaurantList -- After applying filters- what filtered data and how should it reflect on UI */}
 
                 {/* // Conditional Rendering
                 /**

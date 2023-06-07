@@ -116,8 +116,8 @@
 }
 
 .restaurant-body-section h2 {
-    margin: 10px;
-    padding: 10px;
+    margin: 8px;
+    padding: 5px;
     text-align: left;
     color: black;
     font-size: 2.5rem;
@@ -126,8 +126,8 @@
 }
 
 .search-section {
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     text-align: end;
 }
 
@@ -198,14 +198,10 @@
     }
 }
 
-.shimmer-effect .restaurant-cards{
-    display: flex;
-    justify-content: space-evenly;
-}
-
 .shimmer-effect .restaurant-card {
-    min-width: 25%;
-    margin: 2rem;
+    min-width: 20%;
+    margin: 1rem;
+    padding: 1rem;
     border-radius: 10px;
     position: relative;
     transition: transform 0.3s ease;
@@ -214,8 +210,16 @@
 
 .shimmer-effect .restaurant-img {
     border: 0.1px solid grey;
-    width: 180px;
+    width: 250px;
+    height: 160px;
     margin: 10px;
+    padding: auto;
+    border-radius: 10px;
+    flex-grow: 1;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .restaurant-list-card {
