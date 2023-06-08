@@ -33,26 +33,26 @@ const HeaderComponent = () => {
      * userStatus = true => User is logged in Application
      * userStatus = false => User is logged out Application
      */
-    const [userStatus, setUserStatus] = useState(false);
+    // const [userStatus, setUserStatus] = useState(false);
 
-    function userStatusCheck() {
-        // API Call can be made for User Authentication -> write Authentication code here... for login/signUp/logout...
-        setUserStatus(true);
-    }
+    // function userStatusCheck() {
+    //     // API Call can be made for User Authentication -> write Authentication code here... for login/signUp/logout...
+    //     //setUserStatus(true);
+    // }
 
-    useEffect(() => {
-        userStatusCheck()
-    }, [])
+    // useEffect(() => {
+    //     userStatusCheck()
+    // }, [])
 
-    function logInUser() {
-        // To make user login
-        setUserStatus(true);
-    }
+    // function logInUser() {
+    //     // To make user login
+    //     setUserStatus(true);
+    // }
 
-    function logOutUser() {
-        //To make user logOut
-        setUserStatus(false);
-    }
+    // function logOutUser() {
+    //     //To make user logOut
+    //     setUserStatus(false);
+    // }
 
 
     return (
@@ -68,9 +68,9 @@ const HeaderComponent = () => {
                     <li><img src={home} />Home</li>
                     <li><img src={restaurant} />Restaurants</li>
                     <li><img src={cart} />Cart</li>
-                    {
+                    {/* {
                         ((userStatus === true) ? (<li onClick={logOutUser}><img src={logout} />Logout</li>) : (<li onClick={logInUser}><img src={enter} />Login/Signup</li>))
-                    }
+                    } */}
                 </ul>
             </div>
         </div>

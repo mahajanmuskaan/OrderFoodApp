@@ -7,6 +7,37 @@
     background-color: #FFB84C;
 } */
 
+h1 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+h5 {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -71,28 +102,61 @@
     padding: 5px;
 }
 
-.body-section>.food-images {
+.body-section .food-images {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.food-images .food-image-list {
+.body-section .food-image-list {
     width: 300px;
     height: 200px;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0.5rem;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.food-image-list:hover {
-    cursor: pointer;
+.body-section .food-image-list:hover {
     transform: scale(1.1);
     box-shadow: 0 0 2px 2px white;
-    flex-shrink: 1;
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
+}
+
+.food-background-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: url("./assets/images/welcome.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.food-image-welcome {
+    padding: 20px;
+    text-align: end;
+}
+
+.food-image-welcome>h1 {
+    font-weight: bold;
+    margin-top: 2rem;
+    padding: 0 2rem;
+    color: white;
+    text-align: end;
+    font-size: 2.5rem;
+}
+
+.food-image-welcome>button {
+    margin: 2rem;
+}
+
+.sign-up-btn {
+    background-color: crimson;
+    color: white;
+    min-width: 20%;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 #food-quote {
@@ -114,6 +178,7 @@
     margin: 3px;
     padding: 6px;
 }
+
 
 .restaurant-body-section h2 {
     margin: 8px;
@@ -173,19 +238,21 @@
     margin: 0.5rem;
 }
 
+.shimmer-container {
+    text-align: center;
+}
+
 .shimmer-effect {
     text-align: center;
     margin: 20px;
     padding: 30px;
-    position: relative;
-    overflow: hidden;
     background: linear-gradient(to right, #f6f7f8 0%, #e9ebee 50%, #fafbfd 100%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    -webkit-animation: shimmer 0.8s infinite;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 @keyframes shimmer {
@@ -210,7 +277,7 @@
 
 .shimmer-effect .restaurant-img {
     border: 0.1px solid grey;
-    width: 250px;
+    max-width: 250px;
     height: 160px;
     margin: 10px;
     padding: auto;
@@ -353,9 +420,18 @@
     background-color: black;
 }
 
-.footer{
+.footer {
     color: white;
     text-align: center;
     padding: 0.3rem;
     text-decoration: none
+}
+
+.sign-up-component {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: url("./assets/images/food-website.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }

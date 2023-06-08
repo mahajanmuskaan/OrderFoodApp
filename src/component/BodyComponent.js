@@ -141,14 +141,11 @@ export const MainBodyComponent = () => {
                             <li onClick={() => filteredOption('Fast Food')}>Fast Food</li>|
                             <li onClick={() => filteredOption('Chinese')}>Chinese</li>|
                             <li onClick={() => filteredOption('Italian')}>Italian</li>|
-                            <li onClick={() => filteredOption('Continental')}>Continental</li>|
-                            <li onClick={() => filteredOption('Mughlai')}>Mughlai</li>|
-                            <li onClick={() => filteredOption('Afghani')}>Afghani</li>|
+                            <li onClick={() => filteredOption('Thalis')}>Thalis</li>|
                             <li onClick={() => filteredOption('Snacks')}>Snacks</li>|
                             <li onClick={() => filteredOption('Salads')}>Salads</li>|
                             <li onClick={() => filteredOption('Beverages')}>Beverages</li>|
-                            <li onClick={() => filteredOption('Desserts')}>Desserts</li>|
-                            <li onClick={() => filteredOption('Bakery')}>Bakery</li>
+                            <li onClick={() => filteredOption('Desserts')}>Desserts</li>
                             <li id="reset_all" onClick={() => filteredOption('')}>Reset Filter</li>
                         </ul>
                     </div>
