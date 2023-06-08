@@ -1,5 +1,22 @@
+/**
+ * The given React component is a MainBodyComponent that displays a list of restaurants based on user search and filter options.
+
+1. The component imports the necessary dependencies: React, useState, useEffect, and other components like Restaurant and ShimmerUI.
+2. It defines the MainBodyComponent as a functional component using arrow syntax.
+3. Inside the component, there are several state variables defined using the useState hook: searchText, restaurants, originalrestaurants, and filterBy.
+4. The component defines an event handler function called handleChange, which updates the searchText state variable based on user input.
+5. There are two utility functions: filterdata and filterOptions. These functions filter the original list of restaurants based on the search text and filter options, respectively.
+6. The searchData function is called when the search button is clicked. It filters the restaurants based on the searchText state variable and updates the restaurants state accordingly.
+7. The filteredOption function is called when a filter option is clicked. It filters the restaurants based on the selected filter option and updates the filterBy and restaurants state variables accordingly.
+8. The useEffect hook is used to fetch restaurant data from the Swiggy API when the component mounts. The getRestaurants function is an asynchronous function that performs the API request and updates the originalrestaurants and restaurants state variables with the fetched data.
+9. The JSX markup returned by the component includes a search bar, filter options, and a restaurant list. The search bar allows users to enter a search query, and the filter options provide different filtering choices.
+10. The restaurant list is conditionally rendered based on the length of the restaurants array. If the array is empty, a ShimmerUI component is rendered to show a loading state. Otherwise, the real-time data from the API is mapped over to render the Restaurant components.
+11. The component exports the MainBodyComponent as the default export.
+
+*/
+
 import React, { useState, useEffect } from "react";
-import Restaurant from './Restaurant'
+import Restaurant from './RestaurantComponent'
 import ShimmerUI from "./Shimmer";
 
 //import { restaurantList } from '../config.js';

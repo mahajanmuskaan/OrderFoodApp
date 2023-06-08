@@ -347,3 +347,15 @@
     -ms-transform: scale(1.02);
     -o-transform: scale(1.02);
 }
+
+.footer-part {
+    padding: 0.5rem;
+    background-color: black;
+}
+
+.footer{
+    color: white;
+    text-align: center;
+    padding: 0.3rem;
+    text-decoration: none
+}
