@@ -65,7 +65,7 @@ export const SignUpComponent = () => {
             document.getElementById('inputPassword4').classList.remove('error');
             console.log('Form submitted successfully!!');
 
-            return fetchApiData(firstNameText, lastNameText, emailText, passwordText);
+            fetchApiData(firstNameText, lastNameText, emailText, passwordText);
             // API call to make to send the data as POST request
             async function fetchApiData(firstNameText, lastNameText, emailText, passwordText) {
                 try {
@@ -91,10 +91,18 @@ export const SignUpComponent = () => {
                         throw new Error(`HTTP error! status: ${response.status}`);     // if boolean value of response.ok is false, it will throw the error.
                     }
                     else {
+                        const responseData = await response.json();
+                        console.log(responseData); // Do something with the responseData
+                        if (responseData?.status === 'error' && responseData?.message == "user exists") {
+                            const errorMsg = document.createElement('p');
+                            errorMsg.innerText = 'User already exists. Try Login!';
+                            const formele = document.getElementById('form-children').lastElementChild;
+                            formele.appendChild(errorMsg);
+
+                        }
                         // Successful Modal window. Then on clicking OK in modal window the signup page should refresh
                     }
-                    const responseData = await response.json();
-                    console.log(responseData); // Do something with the responseData
+
                 }
                 catch (error) {
                     console.error("Error is there while fetching API. ", error); // Log any errors
@@ -112,7 +120,7 @@ export const SignUpComponent = () => {
                     <div>
                         <h3>SignUp Here!</h3>
                     </div>
-                    <form className="row g-6 px-1">
+                    <form className="row g-6 px-1" id='form-children'>
                         <div className="col-md-6">
                             <label htmlFor="inputFirstName" className="form-label text-style">First Name</label>
                             <input type="text" className="form-control" id="inputFirstName" value={firstNameText} onChange={firstNameChange} />
