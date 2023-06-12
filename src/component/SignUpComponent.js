@@ -64,6 +64,42 @@ export const SignUpComponent = () => {
             document.getElementById('inputEmail4').classList.remove('error');
             document.getElementById('inputPassword4').classList.remove('error');
             console.log('Form submitted successfully!!');
+
+            return fetchApiData(firstNameText, lastNameText, emailText, passwordText);
+            // API call to make to send the data as POST request
+            async function fetchApiData(firstNameText, lastNameText, emailText, passwordText) {
+                try {
+                    // Fetching response from Public API
+                    const response = await fetch("https://www.melivecode.com/api/users/create", {
+                        method: "POST",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            "fname": firstNameText,
+                            "lname": lastNameText,
+                            "username": emailText,
+                            "password": passwordText,
+                            "email": emailText,
+                            "avatar": "https://www.melivecode.com/users/cat.png"
+                        })
+                    });
+                    console.log(response.status);   // Getting Response status
+                    console.log(response.ok);       // Getting boolean value of response.ok
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);     // if boolean value of response.ok is false, it will throw the error.
+                    }
+                    else {
+                        // Successful Modal window. Then on clicking OK in modal window the signup page should refresh
+                    }
+                    const responseData = await response.json();
+                    console.log(responseData); // Do something with the responseData
+                }
+                catch (error) {
+                    console.error("Error is there while fetching API. ", error); // Log any errors
+                }
+            }
         }
     };
 
@@ -91,18 +127,20 @@ export const SignUpComponent = () => {
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="inputPassword4" className="form-label text-style">Password</label>
-                            <input type="text" className="form-control" id="inputPassword4" value={passwordText} onChange={passwordChange} />
+                            <input type="password" className="form-control" id="inputPassword4" value={passwordText} onChange={passwordChange} />
                         </div>
                         <div className="col-6">
                             <label htmlFor="inputAddress" className="form-label text-style">Address</label>
-                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" required />
                         </div>
                         <div className="col-6">
-                            <label htmlFor="inputCity" className="form-label text-style">City</label>
+                            <label htmlFor="inputCity" className="form-label text-style">City(Optional)</label>
                             <input type="text" className="form-control" id="inputCity" />
                         </div>
                         <div className="col-12 text-center">
-                            <button type="button" className="btn btn-primary btn-lg sign-in" onClick={() => { checkSignUp(firstNameText, lastNameText, emailText, passwordText) }}>Sign Up</button>
+                            <button type="button" className="btn btn-primary btn-lg sign-in" onClick={() => {
+                                checkSignUp(firstNameText, lastNameText, emailText, passwordText);
+                            }}>Sign Up</button>
                         </div>
                     </form>
 
