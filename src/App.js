@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom/client';
 import Food1 from '../assets/images/Foodimage1.jpg';
 import Food2 from '../assets/images/Foodimage2.jpg';
 import Food3 from '../assets/images/Foodimage3.jpg';
@@ -13,7 +13,7 @@ const AppLayout = () => {
 
     return (
         <>
-            <HeaderComponent />
+            {/* <HeaderComponent />
             <div className="body-section">
                 <div className="food-images">
                     <img className="food-image-list" src={Food1} alt="food" />
@@ -38,10 +38,10 @@ const AppLayout = () => {
                         <button className="sign-up-btn">Let's Explore..</button>
                     </div>
                 </div>
-            </div>
-            <MainBodyComponent />
-            <FooterComponent />
-            {/* <SignUpComponent /> */}
+            </div> */}
+            {/* <MainBodyComponent />
+            <FooterComponent /> */}
+            <SignUpComponent />
         </>
     );
 };
