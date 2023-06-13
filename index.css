@@ -6,7 +6,7 @@
 body {
     background-image: url("./assets/images/food-website.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 h1 {
@@ -466,11 +466,42 @@ h4 {
     margin-bottom: 10px;
 }
 
-.error{
+.error {
     border: 1px solid red;
 }
 
-@media only screen and (min-width: 700px) {
+.container.blur {
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+
+.modal-box {
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 20%;
+    right: 20%;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: crimson;
+    background-image: none;
+    text-align: center;
+    color: white;
+}
+
+.modal-box h1,
+h2,
+p,
+button {
+    margin: 30px;
+}
+
+.modal-box button {
+    width: 40%;
+}
+
+@media only screen and (min-width: 768px) {
     .box-form {
         border: 1px solid crimson;
         background-color: white;
@@ -478,5 +509,19 @@ h4 {
         padding: 10px;
         max-width: 70%;
         border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-box {
+        top: 5%;
+        bottom: 5%;
+        left: 5%;
+        right: 5%;
+        border: 1px solid black;
+        background-color: crimson;
+        background-image: none;
+        text-align: center;
+        color: white;
     }
 }

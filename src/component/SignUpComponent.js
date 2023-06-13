@@ -1,4 +1,26 @@
+/**
+ * The given component is a sign-up form component implemented using React.
+
+- The component is named `SignUpComponent` and is the default export of the file.
+- It imports React and the `useState` hook from the React library.
+- It also imports a `ModalComponent` from a separate file.
+- The component defines multiple state variables using the `useState` hook: `emailText`, `passwordText`, `firstNameText`, `lastNameText`, and `showModal`.
+- There are event handler functions defined for various input changes: `firstNameChange`, `lastNameChange`, `emailChange`, and `passwordChange`. These functions update the respective state variables.
+- The `showError` function adds the CSS class 'error' to a specified field, indicating an input validation error.
+- The `validateForm` function checks if the form inputs are valid. It returns a boolean value indicating the overall validity of the form.
+- The `checkSignUp` function is called when the sign-up button is clicked. It validates the form inputs using the `validateForm` function and then makes an API call to create a new user.
+- If the API call is successful, a success message is logged, and the `showModal` state variable is set to `true` to show the modal component.
+- The `handleModalClose` function is called when the modal is closed. It sets the state variables to their initial values, effectively resetting the form.
+- The render function returns JSX code that represents the sign-up form. The form inputs are bound to the respective state variables for their values and change events.
+- The sign-up button triggers the `checkSignUp` function when clicked.
+- The component conditionally renders the modal component based on the value of the `showModal` state variable.
+- The modal component is shown when `showModal` is `true`, and it can be closed using the `handleModalClose` function.
+- The component also includes some additional HTML elements for text and headings related to the sign-up form.
+
+ */
+
 import React, { useState } from 'react';
+import ModalComponent from './ModalComponent';
 
 export const SignUpComponent = () => {
 
@@ -6,6 +28,7 @@ export const SignUpComponent = () => {
     const [passwordText, setPasswordText] = useState('');
     const [firstNameText, setFirstNameText] = useState('');
     const [lastNameText, setLastNameText] = useState('');
+    const [showModal, setShowModal] = useState(false); // New state variable
 
 
     const firstNameChange = (e) => {
@@ -63,7 +86,13 @@ export const SignUpComponent = () => {
             document.getElementById('inputLastName').classList.remove('error');
             document.getElementById('inputEmail4').classList.remove('error');
             document.getElementById('inputPassword4').classList.remove('error');
+
             console.log('Form submitted successfully!!');
+
+            const lastChild = document.getElementById('form-children').lastElementChild.lastChild;
+            if (lastChild.innerText === 'User already exists. Try Login!') {
+                document.getElementById('form-children').lastElementChild.removeChild(document.getElementById('form-children').lastElementChild.lastChild);
+            }
 
             fetchApiData(firstNameText, lastNameText, emailText, passwordText);
             // API call to make to send the data as POST request
@@ -100,7 +129,11 @@ export const SignUpComponent = () => {
                             formele.appendChild(errorMsg);
 
                         }
-                        // Successful Modal window. Then on clicking OK in modal window the signup page should refresh
+                        else {
+                            // Successful Modal window. Then on clicking OK in modal window it should redirect to login Page.
+                            setShowModal(true); // Show the modal on successful signup
+                            //window.alert('Sign up successful!');
+                        }
                     }
 
                 }
@@ -111,10 +144,18 @@ export const SignUpComponent = () => {
         }
     };
 
+    const handleModalClose = () => {
+        setShowModal(false); // Close the modal
+        setFirstNameText('');
+        setLastNameText('');
+        setEmailText('');
+        setPasswordText('');
+    }
+
 
     return (
         <>
-            <div className='container'>
+            <div className={`container ${showModal ? 'blur' : ''}`}>
                 <div className="box-form ">
                     <h1>Hey, Welcome!</h1>
                     <div>
@@ -137,13 +178,9 @@ export const SignUpComponent = () => {
                             <label htmlFor="inputPassword4" className="form-label text-style">Password</label>
                             <input type="password" className="form-control" id="inputPassword4" value={passwordText} onChange={passwordChange} />
                         </div>
-                        <div className="col-6">
+                        <div className="col-12">
                             <label htmlFor="inputAddress" className="form-label text-style">Address</label>
                             <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" required />
-                        </div>
-                        <div className="col-6">
-                            <label htmlFor="inputCity" className="form-label text-style">City(Optional)</label>
-                            <input type="text" className="form-control" id="inputCity" />
                         </div>
                         <div className="col-12 text-center">
                             <button type="button" className="btn btn-primary btn-lg sign-in" onClick={() => {
@@ -156,6 +193,9 @@ export const SignUpComponent = () => {
 
                 </div>
             </div>
+            {showModal && (
+                <ModalComponent onClose={handleModalClose} />
+            )}
         </>
     )
 }
