@@ -9,6 +9,8 @@ import MainBodyComponent from "./component/BodyComponent";
 import FooterComponent from "./component/FooterComponent";
 import SignUpComponent from "./component/SignUpComponent";
 import ModalComponent from "./component/ModalComponent";
+import LoginComponent from "./component/LoginComponent";
+
 
 const AppLayout = () => {
 
@@ -42,8 +44,9 @@ const AppLayout = () => {
             </div> */}
             {/* <MainBodyComponent />
             <FooterComponent /> */}
-            <SignUpComponent />
-            {/* <ModalComponent /> */}
+            {/* <SignUpComponent /> */}
+            <LoginComponent />
+
         </>
     );
 };
