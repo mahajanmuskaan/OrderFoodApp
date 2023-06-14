@@ -12,12 +12,13 @@ import SignUpComponent from "./component/SignUpComponent";
 import ModalComponent from "./component/ModalComponent";
 import LoginComponent from "./component/LoginComponent";
 import Error from "./component/Error";
+import RestaurantComponent from "./component/RestaurantComponent";
 
 
 const AppLayout = () => {
 
     return (
-        <> 
+        <>
             <HeaderComponent />
             <div className="body-section">
                 <div className="food-images">
@@ -54,16 +55,22 @@ const AppLayout = () => {
     );
 };
 
-const appRouter = createBrowserRouter([{
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <Error />
-},
-{
-    path: "/signup",
-    element: <SignUpComponent />,
-    errorElement: <Error />
-}
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout />,
+        errorElement: <Error />
+    },
+    {
+        path: "/signup",
+        element: <SignUpComponent />,
+        errorElement: <Error />
+    },
+    {
+        path: "/restaurant",
+        element: <RestaurantComponent />,
+        errorElement: <Error />
+    }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

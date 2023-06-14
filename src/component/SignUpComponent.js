@@ -157,9 +157,9 @@ export const SignUpComponent = () => {
         <>
             <div className={`container ${showModal ? 'blur' : ''}`}>
                 <div className="box-form ">
-                    <h1>Hey, Welcome!</h1>
+                    <h1>Hey, Welcome!👋</h1>
                     <div>
-                        <h3>SignUp Here!</h3>
+                        <h3>SignUp Here!👇</h3>
                     </div>
                     <form className="row g-6 px-1" id='form-children'>
                         <div className="col-md-6">

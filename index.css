@@ -86,18 +86,20 @@ h5 {
     font-weight: 600;
 }
 
+
 .nav-items img {
     width: 25px;
     padding-right: 5px;
+    text-align: center;
 }
 
 
 .nav-items>ul>li:hover {
-    color: crimson;
     border-bottom: 0.5px solid black;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
 }
+
 
 .body-section {
     background-color: rgba(220, 20, 60, 0.966);
@@ -516,8 +518,9 @@ button {
     background-color: crimson;
     color: white;
 }
-.error-section img{
-    min-height: 28rem ;
+
+.error-section img {
+    min-height: 28rem;
     max-width: 100%;
 }
 

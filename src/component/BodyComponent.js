@@ -162,14 +162,16 @@ export const MainBodyComponent = () => {
                  *
                  * This can be acheived using ternary operator..
                  */}
-                {(restaurants.length === 0) ? (< ShimmerUI restaurants={restaurants} />) :
-                    (<div className="restaurant-list">
-                        <div className="restaurant-list-cards">
-                            {restaurants.map((restaurant) => (
-                                <Restaurant {...restaurant.data} key={restaurant.data.id} />
-                            ))}
-                        </div>
-                    </div>)}
+                {
+
+                    (restaurants.length === 0) ? (< ShimmerUI restaurants={restaurants} />) :
+                        (<div className="restaurant-list">
+                            <div className="restaurant-list-cards">
+                                {restaurants.map((restaurant) => (
+                                    <Restaurant {...restaurant.data} key={restaurant.data.id} />
+                                ))}
+                            </div>
+                        </div>)}
             </div>
         </>
 

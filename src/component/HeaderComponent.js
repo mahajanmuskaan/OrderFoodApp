@@ -14,6 +14,7 @@ The given React component is a HeaderComponent that represents the header sectio
 
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from '../../assets/images/logo.png';       //  To import Local folder Image in React file.
 import home from '../../assets/images/home.png';
 import restaurant from '../../assets/images/restaurant.png';
@@ -24,7 +25,8 @@ import logout from '../../assets/images/logout.png';
 
 // Title with Logo Field
 const style = {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    color: 'black'
 }
 
 // Header Component
@@ -65,9 +67,11 @@ const HeaderComponent = () => {
             </a>
             <div className="nav-items">
                 <ul>
-                    <li><img src={home} />Home</li>
+                    <li><img src={home} /><Link to="/" style={style}>Home</Link></li>
                     <li><img src={restaurant} />Restaurants</li>
                     <li><img src={cart} />Cart</li>
+                    <li><img src={enter} /><Link to="/signup" style={style}>Login/Signup</Link></li>
+
                     {/* {
                         ((userStatus === true) ? (<li onClick={logOutUser}><img src={logout} />Logout</li>) : (<li onClick={logInUser}><img src={enter} />Login/Signup</li>))
                     } */}
