@@ -112,6 +112,7 @@ export const MainBodyComponent = () => {
                 const json_data = await response.json();
                 console.log(json_data);
                 const fetchedAPIData = json_data?.data?.cards[2]?.data?.data?.cards;
+                setIsFetching(false);
                 console.log(fetchedAPIData);
                 setOriginalRestaurants(fetchedAPIData);//original data fetched from the Swiggy API
                 setRestaurants(fetchedAPIData);
@@ -123,9 +124,7 @@ export const MainBodyComponent = () => {
         catch (e) {
             console.error(e);
         }
-        finally {
-            setIsFetching(false);
-        }
+        
     }
 
     return (
@@ -182,7 +181,7 @@ export const MainBodyComponent = () => {
                  * This can be acheived using ternary operator..
                  */}
                 {
-                    isFetching ? (< ShimmerUI restaurants={restaurants} />) : !restaurants || restaurants?.length === 0 ?
+                    isFetching ? (< ShimmerUI restaurants={restaurants} />) : (!restaurants || restaurants?.length === 0) ?
                         (<div className="no-data-img">
                             <img src={noData} alt="No data" />
                         </div>) : (<div className="restaurant-list">
