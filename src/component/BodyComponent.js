@@ -16,6 +16,7 @@
 */
 
 import React, { useState, useEffect } from "react";
+import noData from '../../assets/images/No-data-error.png';
 import Restaurant from './RestaurantComponent'
 import ShimmerUI from "./Shimmer";
 
@@ -29,9 +30,11 @@ export const MainBodyComponent = () => {
 
     //the restaurants state always contains the filtered data, while originalData retains the original data fetched from the API for each new filtering operation.
     const [restaurants, setRestaurants] = useState([]);
-    const [originalrestaurants, setOriginalRestaurants] = useState(['']);
+    const [originalrestaurants, setOriginalRestaurants] = useState([]);
 
     const [filterBy, setFilterBy] = useState('');
+    const [isFetching, setIsFetching] = useState(true);
+
 
     // Event handler for input change
     const handleChange = (e) => {
@@ -48,13 +51,21 @@ export const MainBodyComponent = () => {
     }
     // Restaurant Search
     function searchData(searchText, originalrestaurants) {
-        if (searchText !== '') {
-            const filteredData = filterdata(searchText, originalrestaurants);
-            setRestaurants(filteredData);
+        if (!originalrestaurants) {
+            return (<div className='no-data-img'>
+                <img src={noData} />
+            </div>)
         }
         else {
-            setRestaurants(originalrestaurants);
+            if (searchText !== '') {
+                const filteredData = filterdata(searchText, originalrestaurants);
+                setRestaurants(filteredData);
+            }
+            else {
+                setRestaurants(originalrestaurants);
+            }
         }
+
     }
 
     // FilterOption- Search based on cuisines
@@ -66,14 +77,22 @@ export const MainBodyComponent = () => {
         });
     }
     function filteredOption(filterBy) {
-        if (filterBy !== '') {
-            const filteredOptionList = filterOptions(filterBy);
-            setFilterBy(filterBy);
-            setRestaurants(filteredOptionList);
-        } else {
-            setFilterBy('');
-            setRestaurants(originalrestaurants);
+        if (!originalrestaurants) {
+            return (<div className='no-data-img'>
+                <img src={noData} />
+            </div>)
         }
+        else {
+            if (filterBy !== '') {
+                const filteredOptionList = filterOptions(filterBy);
+                setFilterBy(filterBy);
+                setRestaurants(filteredOptionList);
+            } else {
+                setFilterBy('');
+                setRestaurants(originalrestaurants);
+            }
+        }
+
     }
 
 
@@ -81,19 +100,17 @@ export const MainBodyComponent = () => {
     useEffect(() => {
         // Fetch Restaurant Data
         getRestaurants();
-
     }, []);
+
     async function getRestaurants() {
         // To handle errors
+        console.log("entered request")
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.6314253&lng=74.84340259999999&page_type=DESKTOP_WEB_LISTING", {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                },
-            });
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.6314253&lng=74.84340259999999&page_type=DESKTOP_WEB_LISTING");
+            // });
             if (response.ok) {
                 const json_data = await response.json();
+                console.log(json_data);
                 const fetchedAPIData = json_data?.data?.cards[2]?.data?.data?.cards;
                 console.log(fetchedAPIData);
                 setOriginalRestaurants(fetchedAPIData);//original data fetched from the Swiggy API
@@ -105,6 +122,9 @@ export const MainBodyComponent = () => {
         }
         catch (e) {
             console.error(e);
+        }
+        finally {
+            setIsFetching(false);
         }
     }
 
@@ -154,8 +174,7 @@ export const MainBodyComponent = () => {
 
                 {/* RestaurantList -- After applying filters- what filtered data and how should it reflect on UI */}
 
-                {/* // Conditional Rendering
-                /**
+                {/**
                  * If my restaurants array is empty => it should load Shimmer UI.
                  * or
                  * If my restaurants has data => it should load Real time data from API.
@@ -163,15 +182,17 @@ export const MainBodyComponent = () => {
                  * This can be acheived using ternary operator..
                  */}
                 {
-
-                    (restaurants.length === 0) ? (< ShimmerUI restaurants={restaurants} />) :
-                        (<div className="restaurant-list">
+                    isFetching ? (< ShimmerUI restaurants={restaurants} />) : !restaurants || restaurants?.length === 0 ?
+                        (<div className="no-data-img">
+                            <img src={noData} alt="No data" />
+                        </div>) : (<div className="restaurant-list">
                             <div className="restaurant-list-cards">
                                 {restaurants.map((restaurant) => (
                                     <Restaurant {...restaurant.data} key={restaurant.data.id} />
                                 ))}
                             </div>
-                        </div>)}
+                        </div>)
+                }
             </div>
         </>
 

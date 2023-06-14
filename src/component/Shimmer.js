@@ -10,46 +10,27 @@
 
 */
 
-import React, { useState, useEffect } from 'react';
-import noData from '../../assets/images/No-data-error.png';
+import React from 'react';
 
-const ShimmerUI = (restaurants) => {
-    const [showMessage, setShowMessage] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setShowMessage(true);
-        }, 1500)
-
-    }, []);
-
+const ShimmerUI = () => {
     return (
-        <>
-            {(showMessage === false) ?
-                (<>
-                    <div className="shimmer-container">
-                        <h3>Fetching your nearby restaurants...</h3>
-                        <div className='shimmer-effect'>
-                            {Array(10).fill("").map((e) => {
-                                return (
-                                    <div className="restaurant-card">
-                                        <div className="restaurant-img"></div>
-                                        <hr></hr>
-                                        <div className="restaurant-name-details"></div>
-                                        <hr></hr>
-                                    </div>
-                                );
-
-                            })}
+        <div className="shimmer-container">
+            <h3>Fetching your nearby restaurants...</h3>
+            <div className="shimmer-effect">
+                {Array(5).fill("").map((e, index) => {
+                    const restaurantId = index + 1;
+                    return (
+                        <div className="restaurant-card" key={restaurantId}>
+                            <div className="restaurant-img"></div>
+                            <hr />
+                            <div className="restaurant-name-details"></div>
+                            <hr />
                         </div>
-                    </div>
-                </>) : (
-                    <div className='no-data-img'>
-                        <img src={noData} />
-                    </div>
-                )}
-        </>
-    )
-}
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
 
 export default ShimmerUI;
