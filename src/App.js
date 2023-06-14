@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Food1 from '../assets/images/Foodimage1.jpg';
 import Food2 from '../assets/images/Foodimage2.jpg';
 import Food3 from '../assets/images/Foodimage3.jpg';
@@ -10,13 +11,14 @@ import FooterComponent from "./component/FooterComponent";
 import SignUpComponent from "./component/SignUpComponent";
 import ModalComponent from "./component/ModalComponent";
 import LoginComponent from "./component/LoginComponent";
+import Error from "./component/Error";
 
 
 const AppLayout = () => {
 
     return (
-        <>
-            {/* <HeaderComponent />
+        <> 
+            <HeaderComponent />
             <div className="body-section">
                 <div className="food-images">
                     <img className="food-image-list" src={Food1} alt="food" />
@@ -41,15 +43,28 @@ const AppLayout = () => {
                         <button className="sign-up-btn">Let's Explore..</button>
                     </div>
                 </div>
-            </div> */}
-            {/* <MainBodyComponent />
-            <FooterComponent /> */}
+            </div>
+            <MainBodyComponent />
+            <FooterComponent />
             {/* <SignUpComponent /> */}
-            <LoginComponent />
+            {/* <LoginComponent /> */}
+            {/* <Error /> */}
 
         </>
     );
 };
 
+const appRouter = createBrowserRouter([{
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />
+},
+{
+    path: "/signup",
+    element: <SignUpComponent />,
+    errorElement: <Error />
+}
+])
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
