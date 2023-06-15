@@ -10,9 +10,10 @@
 
  */
 
+import { Link } from "react-router-dom";
 import { IMG_CDN } from "../config";
 
-const RestaurantComponent = ({ cloudinaryImageId, name, cuisines, costForTwoString, avgRating, deliveryTime }) => {
+const RestaurantComponent = ({ id, cloudinaryImageId, name, cuisines, costForTwoString, avgRating, deliveryTime }) => {
     return (
         <div className="restaurant-list-card">
             <img className="restaurant-img" src={IMG_CDN + cloudinaryImageId} />
@@ -25,7 +26,10 @@ const RestaurantComponent = ({ cloudinaryImageId, name, cuisines, costForTwoStri
                     <h6 className="restaurant-costfor"> {costForTwoString}</h6>
                 </div>
                 <hr></hr>
-                <div className="quick_menu"><h6>Show Menu</h6></div>
+                <div className="quick_menu">
+                    <Link to={"/restaurant-menu/" + id} id="show-menu"><h6>Show Menu</h6></Link>
+
+                </div>
                 <hr></hr>
             </div>
 

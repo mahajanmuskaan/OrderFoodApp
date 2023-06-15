@@ -105,7 +105,7 @@ export const MainBodyComponent = () => {
         // To handle errors
         console.log("entered request")
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&page_type=DESKTOP_WEB_LISTING");
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&page_type=DESKTOP_WEB_LISTING");
             // });
             if (response.ok) {
                 const json_data = await response.json();

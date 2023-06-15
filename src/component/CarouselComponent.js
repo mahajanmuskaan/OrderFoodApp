@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import Food1 from '../../assets/images/Foodimage1.jpg';
 import Food2 from '../../assets/images/Foodimage2.jpg';
 import Food3 from '../../assets/images/Foodimage3.jpg';
@@ -28,7 +30,9 @@ export const CarouselComponent = () => {
                             Discover a world of flavor at your fingertips. <br />Welcome to our Foodie's ADDA
                             website,<br /> where deliciousness awaits!
                         </h1>
-                        <button className="sign-up-btn">Let's Explore..</button>
+                        <button className="sign-up-btn">
+                            <Link to="/restaurant" id='explore-btn'>Let's Explore..</Link>
+                        </button>
                     </div>
                 </div>
             </div>
