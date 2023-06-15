@@ -3,16 +3,15 @@
 
 1. The component imports the necessary dependencies: React, useState, useEffect, and other components like Restaurant and ShimmerUI.
 2. It defines the MainBodyComponent as a functional component using arrow syntax.
-3. Inside the component, there are several state variables defined using the useState hook: searchText, restaurants, originalrestaurants, and filterBy.
+3. Inside the component, there are several state variables defined using the useState hook: searchText, restaurants, originalrestaurants, filterBy, and isFetching.
 4. The component defines an event handler function called handleChange, which updates the searchText state variable based on user input.
 5. There are two utility functions: filterdata and filterOptions. These functions filter the original list of restaurants based on the search text and filter options, respectively.
 6. The searchData function is called when the search button is clicked. It filters the restaurants based on the searchText state variable and updates the restaurants state accordingly.
 7. The filteredOption function is called when a filter option is clicked. It filters the restaurants based on the selected filter option and updates the filterBy and restaurants state variables accordingly.
 8. The useEffect hook is used to fetch restaurant data from the Swiggy API when the component mounts. The getRestaurants function is an asynchronous function that performs the API request and updates the originalrestaurants and restaurants state variables with the fetched data.
 9. The JSX markup returned by the component includes a search bar, filter options, and a restaurant list. The search bar allows users to enter a search query, and the filter options provide different filtering choices.
-10. The restaurant list is conditionally rendered based on the length of the restaurants array. If the array is empty, a ShimmerUI component is rendered to show a loading state. Otherwise, the real-time data from the API is mapped over to render the Restaurant components.
+10. The restaurant list is conditionally rendered based on the length of the restaurants array. If the array is empty or isFetching is true, a ShimmerUI component is rendered to show a loading state. If the array is not empty, the real-time data from the API is mapped over to render the Restaurant components.
 11. The component exports the MainBodyComponent as the default export.
-
 */
 
 import React, { useState, useEffect } from "react";
@@ -106,7 +105,7 @@ export const MainBodyComponent = () => {
         // To handle errors
         console.log("entered request")
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.6314253&lng=74.84340259999999&page_type=DESKTOP_WEB_LISTING");
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&page_type=DESKTOP_WEB_LISTING");
             // });
             if (response.ok) {
                 const json_data = await response.json();
@@ -124,7 +123,7 @@ export const MainBodyComponent = () => {
         catch (e) {
             console.error(e);
         }
-        
+
     }
 
     return (
@@ -174,9 +173,9 @@ export const MainBodyComponent = () => {
                 {/* RestaurantList -- After applying filters- what filtered data and how should it reflect on UI */}
 
                 {/**
-                 * If my restaurants array is empty => it should load Shimmer UI.
-                 * or
-                 * If my restaurants has data => it should load Real time data from API.
+                 * The restaurant list is conditionally rendered based on the length of the restaurants array. 
+                 * If the array is empty or isFetching is true, a ShimmerUI component is rendered to show a loading state. 
+                 * If the array is not empty, the real-time data from the API is mapped over to render the Restaurant components.
                  *
                  * This can be acheived using ternary operator..
                  */}
