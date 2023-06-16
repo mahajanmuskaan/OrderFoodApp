@@ -15,7 +15,7 @@ import React from 'react';
 const ShimmerUI = () => {
     return (
         <div className="shimmer-container">
-            <h3>Fetching your nearby restaurants...</h3>
+            <h3>Fetching results...</h3>
             <div className="shimmer-effect">
                 {Array(5).fill("").map((e, index) => {
                     const restaurantId = index + 1;

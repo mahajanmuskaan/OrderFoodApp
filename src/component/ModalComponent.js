@@ -17,6 +17,7 @@
 
 
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const ModalComponent = ({ onClose }) => {
@@ -30,10 +31,10 @@ const ModalComponent = ({ onClose }) => {
     return (
         <div className={`modal-box ${isOpen ? 'open' : 'closed'}`}>
             <h1>Great!!</h1>
-            <h2>You have successfully signed up!</h2>
+            <h2>You have successfully signed up!✔️</h2>
             <p>Enjoy your Meal!!</p>
-            <button type="button" className="btn btn-primary btn-lg" onClick={closeModal}>
-                OK
+            <button type="button" className="btn btn-outline-dark btn-lg" onClick={closeModal}>
+                <Link to="/" id="signed-ok">OK</Link>
             </button>
         </div>
     );
