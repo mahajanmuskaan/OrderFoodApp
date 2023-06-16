@@ -574,6 +574,7 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
     text-align: left;
+    flex-wrap: wrap;
 }
 
 .restaurant-details>h1,
@@ -581,6 +582,10 @@ h3,
 p {
     padding: 2px;
     margin: 2px;
+}
+
+.restaurant-details>p>img{
+    width: 20px;
 }
 
 .restaurant-details>img {

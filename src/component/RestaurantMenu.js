@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import React from 'react';
 import ShimmerUI from "./Shimmer";
 import { IMG_CDN } from "../config";
+import cuisine from "../../assets/images/cuisine.png";
+import location from "../../assets/images/location.png";
+import star from "../../assets/images/star.png"
 
 const IMG_CDN_Link = 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/'
 
@@ -15,8 +18,10 @@ export const RestaurantMenu = () => {
     const [restaurantName, setRestaurantName] = useState('');
     const [restaurantAddress, setRestaurantAddress] = useState('');
     const [restaurantCuisines, setRestaurantCuisines] = useState('');
-    const [restaurantavgrating, setRestaurantAvgRating] = useState('');
+    const [restauranLocality, setRestaurantLocality] = useState('');
     const [restaurantImg, setRestaurantImg] = useState('');
+    const [restaurantRating, setRestaurantRating] = useState('');
+    const [restaurantAvgRating, setRestaurantAvgRating] = useState('');
     useEffect(() => {
         getRestaurantMenu();
     }, []);
@@ -33,8 +38,10 @@ export const RestaurantMenu = () => {
                 setRestaurantName(restaurant_detail.name); // Extract the name from the response
                 setRestaurantAddress(restaurant_detail.city); // Extract the address from the response
                 setRestaurantCuisines(restaurant_detail.cuisines);
-                setRestaurantAvgRating(restaurant_detail.avgRating);
+                setRestaurantLocality(restaurant_detail.areaName);
                 setRestaurantImg(restaurant_detail.cloudinaryImageId);
+                setRestaurantRating(restaurant_detail?.totalRatingsString);
+                setRestaurantAvgRating(restaurant_detail?.avgRatingString);
             } else {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -50,8 +57,9 @@ export const RestaurantMenu = () => {
                     <div className="restaurant-address">
                         <div className="restaurant-details" >
                             <h1>{restaurantName}</h1> {/* Render the restaurant name */}
-                            <p>{restaurantAddress}</p> {/* Render the restaurant address */}
-                            <p>{restaurantCuisines && restaurantCuisines.length > 0 ? restaurantCuisines.join(', ') : 'No cuisines available'}</p>
+                            <p><img src={location} /> {restauranLocality}, {restaurantAddress}</p> {/* Render the restaurant address */}
+                            <p><img src={cuisine} /> {restaurantCuisines && restaurantCuisines.length > 0 ? restaurantCuisines.join(', ') : 'No cuisines available'}</p>
+                            <p id="star-rating"><img src={star} /> { restaurantAvgRating }</p>
                         </div>
                         <div className="restaurant-details" >
                             <img src={IMG_CDN_Link + restaurantImg} />
