@@ -33,7 +33,7 @@ const ModalComponent = ({ onClose }) => {
             <h1>Great!!</h1>
             <h2>You have successfully signed up!✔️</h2>
             <p>Enjoy your Meal!!</p>
-            <button type="button" className="btn btn-outline-dark btn-lg" onClick={closeModal}>
+            <button type="button" className="btn btn-outline-primary btn-lg" onClick={closeModal}>
                 <Link to="/" id="signed-ok">OK</Link>
             </button>
         </div>

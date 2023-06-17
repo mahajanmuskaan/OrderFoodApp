@@ -8,6 +8,7 @@ import SignUpComponent from "./component/SignUpComponent";
 import Error from "./component/Error";
 import CarouselComponent from "./component/CarouselComponent";
 import RestaurantMenu from "./component/RestaurantMenu";
+import LoginComponent from "./component/LoginComponent";
 
 
 const AppLayout = () => {
@@ -42,6 +43,11 @@ const appRouter = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUpComponent />,
+                errorElement: <Error />
+            },
+            {
+                path: "/login",
+                element: <LoginComponent />,
                 errorElement: <Error />
             },
 

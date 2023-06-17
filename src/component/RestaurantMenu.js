@@ -20,7 +20,7 @@ export const RestaurantMenu = () => {
     const [restaurantCuisines, setRestaurantCuisines] = useState('');
     const [restauranLocality, setRestaurantLocality] = useState('');
     const [restaurantImg, setRestaurantImg] = useState('');
-    const [restaurantRating, setRestaurantRating] = useState('');
+    const [restaurantId, setRestaurantId] = useState('');
     const [restaurantAvgRating, setRestaurantAvgRating] = useState('');
     useEffect(() => {
         getRestaurantMenu();
@@ -40,7 +40,7 @@ export const RestaurantMenu = () => {
                 setRestaurantCuisines(restaurant_detail.cuisines);
                 setRestaurantLocality(restaurant_detail.areaName);
                 setRestaurantImg(restaurant_detail.cloudinaryImageId);
-                setRestaurantRating(restaurant_detail?.totalRatingsString);
+                setRestaurantId(restaurant_detail?.id);
                 setRestaurantAvgRating(restaurant_detail?.avgRatingString);
             } else {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -55,7 +55,7 @@ export const RestaurantMenu = () => {
             {restaurant ? (
                 <div className="restaurant-menus">
                     <div className="restaurant-address">
-                        <div className="restaurant-details" >
+                        <div className="restaurant-details" key={restaurantId} >
                             <h1>{restaurantName}</h1> {/* Render the restaurant name */}
                             <p><img src={location} /> {restauranLocality}, {restaurantAddress}</p> {/* Render the restaurant address */}
                             <p><img src={cuisine} /> {restaurantCuisines && restaurantCuisines.length > 0 ? restaurantCuisines.join(', ') : 'No cuisines available'}</p>
@@ -72,7 +72,7 @@ export const RestaurantMenu = () => {
                         <ul>
                             {restaurant.map((item) => (
                                 <div className="restaurant-menu-items">
-                                    <div className="restaurant-menu-items-details" >
+                                    <div className="restaurant-menu-items-details" key={item?.card?.info?.id} >
                                         <h3>{item?.card?.info?.name}</h3>
                                         <h4>Rs. {parseInt(item?.card?.info?.price) * 0.01}</h4>
                                         <h5>{item?.card?.info?.description}</h5>

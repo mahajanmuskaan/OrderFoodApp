@@ -9,6 +9,8 @@
     background-repeat: repeat;
 } */
 
+/* Header Section */
+
 h1 {
     font-size: 36px;
     font-family: 'Montserrat', sans-serif;
@@ -100,6 +102,8 @@ h5 {
     transition: all 0.1s ease-in-out;
 }
 
+/* Home-Page Body Section */
+
 .body-section {
     background-color: rgba(220, 20, 60, 0.966);
     padding: 5px;
@@ -188,6 +192,7 @@ h5 {
     padding: 6px;
 }
 
+/* Body and Restaurant Components */
 
 .restaurant-body-section h2 {
     margin: 8px;
@@ -433,6 +438,8 @@ h5 {
     -o-transform: scale(1.02);
 }
 
+/* Footer Component Section */
+
 .footer-part {
     padding: 0.5rem;
     background-color: black;
@@ -444,6 +451,8 @@ h5 {
     padding: 0.3rem;
     text-decoration: none
 }
+
+/* Sign Up Component Section */
 
 .container {
     margin: auto;
@@ -528,7 +537,7 @@ button {
 }
 
 .modal-box button:hover {
-    background-color: grey;
+    background-color: crimson;
     color: white;
 }
 
@@ -536,6 +545,8 @@ button {
     text-decoration: none;
     color: black;
 }
+
+/* Error Component Section */
 
 .error-section {
     margin: auto;
@@ -553,6 +564,8 @@ button {
     min-height: 28rem;
     max-width: 100%;
 }
+
+/* Restaurant Menu Component Section */
 
 .restaurant-menus {
     text-align: center;
@@ -584,7 +597,7 @@ p {
     margin: 2px;
 }
 
-.restaurant-details>p>img{
+.restaurant-details>p>img {
     width: 20px;
 }
 
@@ -641,6 +654,21 @@ h5 {
     height: 160px;
 }
 
+/* Login Page */
+.login-page{
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+    /* background-image: url("./assets/images/food-website.jpg");
+    background-size: cover;
+    background-repeat: repeat; */
+}
+
+.login-page-body{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: white;
+}
 
 
 @media only screen and (max-width: 768px) {
