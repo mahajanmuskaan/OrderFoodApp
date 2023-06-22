@@ -1,80 +1,77 @@
 import React, { useState } from 'react';
-import ModalComponent from './ModalComponent';
 
 const LoginComponent = () => {
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
-    const [showModal, setShowModal] = useState(false);
+    const [error, setError] = useState('');
 
-    const emailChange = (e) => {
+    const handleEmailChange = (e) => {
         setEmailText(e.target.value);
     };
 
-    const passwordChange = (e) => {
+    const handlePasswordChange = (e) => {
         setPasswordText(e.target.value);
     };
 
-    const showError = (fieldId) => {
-        const field = document.getElementById(fieldId);
-        field.classList.add('error');
-    };
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('https://www.melivecode.com/api/users');
+            const users = await response.json();
 
-    const validateForm = (email, password) => {
-        if (email === '' || password === '') {
-            return false;
-        }
-        return true;
-    };
+            console.log(users);
 
-    const handleLogin = () => {
-        const isValid = validateForm(emailText, passwordText);
+            const user = users.find((user) => user.username === emailText);
 
-        if (isValid) {
-            // Perform authentication logic here (e.g., make API call to validate credentials)
-            // Replace this with your actual authentication code
-
-            // Simulating a successful login
-
+            if (user) {
+                console.log('User logged in successfully');
+                // Perform any necessary actions after successful login
+                window.location.href = '/';
+            } else {
+                setError('Invalid email or password.');
+            }
+        } catch (error) {
+            console.error('Error occurred while logging in:', error);
+            setError('An error occurred during login. Please try again later.');
         }
     };
 
     return (
         <>
-            <div className={`container ${showModal ? 'blur' : ''}`}>
-                <div className="login-page">
-                    <div className="login-page-body">
-                        <form>
-                            <h1 style={{ textAlign: 'center' }}>Login</h1>
-                            <h2 style={{ textAlign: 'center' }}>Welcome Back!!</h2>
-                            <div className="form-group">
-                                <label htmlFor="inputEmail">Email</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="inputEmail"
-                                    value={emailText}
-                                    onChange={emailChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="inputPassword">Password</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="inputPassword"
-                                    value={passwordText}
-                                    onChange={passwordChange}
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={handleLogin}
-                            >
-                                Login
-                            </button>
-                        </form>
+            <div className="container">
+                <div className="box-form">
+                    <h1>Login🔒</h1>
+                    <div>
+                        <h3>Welcome back! Login to your account.</h3>
                     </div>
+                    <form className="row g-6 px-1" id="form-children">
+                        <div className="form-group">
+                            <label htmlFor="inputEmail">Email</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="inputEmail"
+                                value={emailText}
+                                onChange={handleEmailChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="inputPassword">Password</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="inputPassword"
+                                value={passwordText}
+                                onChange={handlePasswordChange}
+                            />
+                        </div>
+                    </form>
+                    {error && <div className="error-message">{error}</div>}
+                    <div className="col-12 text-center">
+                        <button type="button" className="btn btn-primary btn-lg sign-in" onClick={handleLogin}>
+                            Login
+                        </button>
+                    </div>
+                    <h4>Don't have an account? Sign Up</h4>
                 </div>
             </div>
         </>

@@ -1,24 +1,3 @@
-/**
- * The given component is a sign-up form component implemented using React.
-
-- The component is named `SignUpComponent` and is the default export of the file.
-- It imports React and the `useState` hook from the React library.
-- It also imports a `ModalComponent` from a separate file.
-- The component defines multiple state variables using the `useState` hook: `emailText`, `passwordText`, `firstNameText`, `lastNameText`, and `showModal`.
-- There are event handler functions defined for various input changes: `firstNameChange`, `lastNameChange`, `emailChange`, and `passwordChange`. These functions update the respective state variables.
-- The `showError` function adds the CSS class 'error' to a specified field, indicating an input validation error.
-- The `validateForm` function checks if the form inputs are valid. It returns a boolean value indicating the overall validity of the form.
-- The `checkSignUp` function is called when the sign-up button is clicked. It validates the form inputs using the `validateForm` function and then makes an API call to create a new user.
-- If the API call is successful, a success message is logged, and the `showModal` state variable is set to `true` to show the modal component.
-- The `handleModalClose` function is called when the modal is closed. It sets the state variables to their initial values, effectively resetting the form.
-- The render function returns JSX code that represents the sign-up form. The form inputs are bound to the respective state variables for their values and change events.
-- The sign-up button triggers the `checkSignUp` function when clicked.
-- The component conditionally renders the modal component based on the value of the `showModal` state variable.
-- The modal component is shown when `showModal` is `true`, and it can be closed using the `handleModalClose` function.
-- The component also includes some additional HTML elements for text and headings related to the sign-up form.
-
- */
-
 import React, { useState } from 'react';
 import ModalComponent from './ModalComponent';
 
