@@ -14,6 +14,11 @@ const LoginComponent = () => {
         setPasswordText(e.target.value);
     };
 
+    const showError = (fieldId) => {
+        const field = document.getElementById(fieldId);
+        field.classList.add('error');
+    };
+
     const validateForm = (email, password) => {
         if (email === '' || password === '') {
             return false;
@@ -29,7 +34,7 @@ const LoginComponent = () => {
             // Replace this with your actual authentication code
 
             // Simulating a successful login
-            
+
         }
     };
 
@@ -40,6 +45,7 @@ const LoginComponent = () => {
                     <div className="login-page-body">
                         <form>
                             <h1 style={{ textAlign: 'center' }}>Login</h1>
+                            <h2 style={{ textAlign: 'center' }}>Welcome Back!!</h2>
                             <div className="form-group">
                                 <label htmlFor="inputEmail">Email</label>
                                 <input
