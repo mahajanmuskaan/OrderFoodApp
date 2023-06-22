@@ -18,6 +18,7 @@ import React, { useState, useEffect } from "react";
 import noData from '../../assets/images/No-data-error.png';
 import Restaurant from './RestaurantComponent'
 import ShimmerUI from "./Shimmer";
+import { filterdata, filterOptions } from "../utils/helper";
 
 //import { restaurantList } from '../config.js';
 
@@ -48,6 +49,7 @@ export const MainBodyComponent = () => {
         }
         ));
     }
+
     // Restaurant Search
     function searchData(searchText, originalrestaurants) {
         if (!originalrestaurants) {
@@ -75,6 +77,8 @@ export const MainBodyComponent = () => {
             );
         });
     }
+
+    // Filters searching
     function filteredOption(filterBy) {
         if (!originalrestaurants) {
             return (<div className='no-data-img'>
