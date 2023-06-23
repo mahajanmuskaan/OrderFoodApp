@@ -1,18 +1,3 @@
-/*
-The given React component is a HeaderComponent that represents the header section of an application.
-
-1. The component imports the necessary dependencies: React, useEffect, and useState, as well as several images used in the header.
-2. It defines the HeaderComponent as a functional component using arrow syntax.
-3. Inside the component, there is a state variable called userStatus, which represents whether the user is logged in or logged out. It is initially set to false.
-4. The userStatusCheck function is called within the useEffect hook to check the user's authentication status. In this example, it simply sets the userStatus to true.
-5. The logInUser function is called when the user clicks on the "Login/Signup" option in the header. It sets the userStatus to true, simulating a user login.
-6. The logOutUser function is called when the user clicks on the "Logout" option in the header. It sets the userStatus to false, simulating a user logout.
-7. The JSX markup returned by the component includes a logo, the application name, and a navigation menu. The navigation menu consists of several list items representing different sections of the application, such as Home, Restaurants, and Cart. The "Login/Signup" or "Logout" option is conditionally rendered based on the userStatus.
-8. The component exports the HeaderComponent as the default export.
-
-*/
-
-
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../../assets/images/logo.png';       //  To import Local folder Image in React file.

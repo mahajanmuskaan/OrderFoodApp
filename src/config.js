@@ -12,8 +12,6 @@
 //Config Driven UI - Mock Data from API
 export const IMG_CDN = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-export const Restaurant_MENU_FETCH_LINK = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=31.638763&lng=74.8580233&restaurantId="
-
 export const restaurantList = [
     {
         type: "restaurant",
