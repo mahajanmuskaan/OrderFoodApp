@@ -18,7 +18,7 @@ import React, { useState, useEffect } from "react";
 import noData from '../../assets/images/No-data-error.png';
 import Restaurant from './RestaurantComponent'
 import ShimmerUI from "./Shimmer";
-import { filterdata, filterOptions } from "../utils/helper";
+import { filterdata, filterOptions } from "../utils/useRestaurant";
 
 //import { restaurantList } from '../config.js';
 
