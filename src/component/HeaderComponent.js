@@ -53,6 +53,7 @@ const HeaderComponent = () => {
                 <ul>
                     <li><img src={home} /><Link to="/" style={style}>Home</Link></li>
                     <li><img src={restaurant} /><Link to="/restaurant" style={style}>Restaurants</Link></li>
+                    <li><img src={cart} /><Link to="/foodMart" style={style}>Food Mart</Link></li>
                     <li><img src={cart} />Cart</li>
                     <li><img src={enter} /><Link to="/signup" style={style}>Login/Signup</Link></li>
 

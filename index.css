@@ -58,8 +58,8 @@ h5 {
 
 #logo {
     padding: 3px;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 100px;
 }
 
@@ -126,6 +126,7 @@ h5 {
 
 .body-section .food-image-list:hover {
     transform: scale(1.1);
+    transform-origin: center center;
     box-shadow: 0 0 2px 2px white;
 }
 
@@ -670,6 +671,22 @@ h5 {
     background-color: white;
 }
 
+/* Food Mart Section */
+.food-mart-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.food-mart-section img{
+    height: 350px;
+    object-fit: contain;
+    border: 0.5px solid #e9ebee ;
+    box-shadow: #e9ebee;
+
+}
 
 @media only screen and (max-width: 768px) {
     .box-form {
