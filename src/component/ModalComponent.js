@@ -16,7 +16,7 @@ const ModalComponent = ({ onClose }) => {
             <h2>You have successfully signed up!✔️</h2>
             <p>Enjoy your Meal!!</p>
             <button type="button" className="btn btn-outline-primary btn-lg" onClick={closeModal}>
-                <Link to="/" id="signed-ok">OK</Link>
+                <Link to="/login" id="signed-ok">OK</Link>
             </button>
         </div>
     );

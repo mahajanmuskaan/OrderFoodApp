@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginComponent = () => {
     const [emailText, setEmailText] = useState('');
@@ -71,7 +72,9 @@ const LoginComponent = () => {
                             Login
                         </button>
                     </div>
-                    <h4>Don't have an account? Sign Up</h4>
+                    <h4>Don't have an account?
+                        <Link to="/signup">Sign Up</Link>
+                    </h4>
                 </div>
             </div>
         </>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import ModalComponent from './ModalComponent';
 
 export const SignUpComponent = () => {
@@ -168,7 +169,9 @@ export const SignUpComponent = () => {
                         </div>
                     </form>
 
-                    <h4>Already have an account? Login</h4>
+                    <h4>Already have an account? 
+                        <Link to="/login">Login</Link>
+                    </h4>
 
                 </div>
             </div>
