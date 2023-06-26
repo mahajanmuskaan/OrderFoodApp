@@ -71,8 +71,8 @@ export const RestaurantMenu = () => {
                     <div>
                         <ul>
                             {restaurant.map((item) => (
-                                <div className="restaurant-menu-items">
-                                    <div className="restaurant-menu-items-details" key={item?.card?.info?.id} >
+                                <div className="restaurant-menu-items" key={item?.card?.info?.id}>
+                                    <div className="restaurant-menu-items-details" >
                                         <h3>{item?.card?.info?.name}</h3>
                                         <h4>Rs. {parseInt(item?.card?.info?.price) * 0.01}</h4>
                                         <h5>{item?.card?.info?.description}</h5>

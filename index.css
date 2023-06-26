@@ -311,72 +311,6 @@ h5 {
     text-align: center;
 }
 
-.restaurant-list-card {
-    /*height: 100%;
-    */
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 10px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 0.3s ease;
-    -webkit-transition: transform 0.3s ease;
-    -moz-transition: transform 0.3s ease;
-    -ms-transition: transform 0.3s ease;
-    -o-transition: transform 0.3s ease;
-}
-
-.restaurant-img {
-    width: 250px;
-    height: 160px;
-    margin: 10px;
-    padding: auto;
-    border-radius: 10px;
-    flex-grow: 1;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.restaurant-details {
-    margin: 5px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.restaurant-name {
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-.restaurant-rating {
-    text-align: center;
-}
-
-.restaurant-name-details {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 2px;
-}
-
-.restaurant-rating,
-.restaurant-cuisines {
-    margin: 3px;
-    font-size: 1rem;
-}
-
-.restaurant-costfor,
-.restaurant-time {
-    font-size: 0.8rem;
-    margin: 2px;
-}
-
 .filters_options>ul {
     display: flex;
     flex-wrap: wrap;
@@ -412,9 +346,73 @@ h5 {
     margin: 2rem;
 }
 
+.restaurant-list-card {
+    /*height: 100%;
+    */
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+}
+
+.restaurant-img {
+    width: 250px;
+    height: 160px;
+    margin: 10px;
+    padding: auto;
+    border-radius: 10px;
+    flex-grow: 1;
+    object-fit: cover;
+}
+
+.restaurant-details {
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.restaurant-name {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.restaurant-rating {
+    text-align: center;
+}
+
+.restaurant-name-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2px;
+}
+
+.restaurant-rating,
+.restaurant-cuisines {
+    margin: 2px;
+    font-size: 0.9rem;
+}
+
+.restaurant-costfor,
+.restaurant-time {
+    font-size: 0.8rem;
+    margin: 2px;
+}
+
 .quick_menu h6 {
     text-align: center;
-    margin: 1px;
+    margin: 0.5px;
 }
 
 #show-menu {
@@ -610,7 +608,6 @@ p {
     border-radius: 10px;
     margin: 1rem;
     padding: 1rem;
-    border: 1px solid black;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -618,6 +615,7 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
 }
 
 .restaurant-menu-items:hover {
@@ -654,7 +652,7 @@ h5 {
 }
 
 /* Login Page */
-.login-page{
+.login-page {
     width: 100%;
     margin: auto;
     padding: 1rem;
@@ -663,14 +661,14 @@ h5 {
     background-repeat: repeat; */
 }
 
-.login-page-body{
+.login-page-body {
     margin: 0.5rem;
     padding: 0.5rem;
     background-color: white;
 }
 
 /* Food Mart Section */
-.food-mart-section{
+.food-mart-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -678,10 +676,10 @@ h5 {
     margin: 20px;
 }
 
-.food-mart-section img{
+.food-mart-section img {
     height: 350px;
     object-fit: contain;
-    border: 0.5px solid #e9ebee ;
+    border: 0.5px solid #e9ebee;
     box-shadow: #e9ebee;
 
 }
