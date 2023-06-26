@@ -11,6 +11,7 @@ import RestaurantMenu from "./component/RestaurantMenu";
 import LoginComponent from "./component/LoginComponent";
 import useOnline from "./utils/useOnline";
 import ShimmerUI from "./component/Shimmer";
+import Help from "./component/Help";
 // Lazy Loading of Food Mart Component
 const FoodMartComponent = lazy(() => import("./component/FoodMartComponent"));
 
@@ -73,6 +74,11 @@ const appRouter = createBrowserRouter([
             {
                 path: "/login",
                 element: <LoginComponent />,
+                errorElement: <Error />
+            },
+            {
+                path: "/help",
+                element: <Help />,
                 errorElement: <Error />
             },
             {
