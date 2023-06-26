@@ -694,24 +694,30 @@ h5 {
 .question-section {
     margin: 2rem;
     padding: auto;
-    display: grid
-    
 }
 
 .questions {
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
-.questions>h3{
+.question-option{
+    display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.question-option>h3{
     font-weight: bold!important ;
     font-family:'Segoe UI', Tahoma;
     margin: 1rem;
     padding: auto;
+    text-align: left;
 }
 
 .questions>p {

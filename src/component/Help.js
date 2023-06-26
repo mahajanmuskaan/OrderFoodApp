@@ -5,23 +5,24 @@ export const Section = ({ title, description }) => {
 
     return (
         <div className="questions">
-            <h3>{title}</h3>
-            {isVisible ? (
-                <button
-                    className="btn btn-primary"
-                    onClick={() => setIsVisible(false)}
-                >
-                    Hide
-                </button>
-            ) : (
-                <button
-                    className="btn btn-primary"
-                    onClick={() => setIsVisible(true)}
-                >
-                    Show
-                </button>
-            )}
-
+            <div className="question-option">
+                <h3>{title}</h3>
+                {isVisible ? (
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => setIsVisible(false)}
+                    >
+                        Hide
+                    </button>
+                ) : (
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => setIsVisible(true)}
+                    >
+                        Show
+                    </button>
+                )}
+            </div>
             {isVisible && <p>{description}</p>}
         </div>
     );
