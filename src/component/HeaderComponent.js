@@ -27,11 +27,6 @@ const HeaderComponent = () => {
         });
     };
 
-    // Perform some action when the user email changes
-    useEffect(() => {
-        console.log(user.email);
-    });
-
     // Render the header component
     return (
         <div className="header">

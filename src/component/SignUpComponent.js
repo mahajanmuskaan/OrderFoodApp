@@ -67,8 +67,6 @@ export const SignUpComponent = () => {
             document.getElementById('inputEmail4').classList.remove('error');
             document.getElementById('inputPassword4').classList.remove('error');
 
-            console.log('Form submitted successfully!!');
-
             const lastChild = document.getElementById('form-children').lastElementChild.lastChild;
             if (lastChild.innerText === 'User already exists. Try Login!') {
                 document.getElementById('form-children').lastElementChild.removeChild(document.getElementById('form-children').lastElementChild.lastChild);
@@ -94,14 +92,11 @@ export const SignUpComponent = () => {
                             "avatar": "https://www.melivecode.com/users/cat.png"
                         })
                     });
-                    console.log(response.status);   // Getting Response status
-                    console.log(response.ok);       // Getting boolean value of response.ok
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);     // if boolean value of response.ok is false, it will throw the error.
                     }
                     else {
                         const responseData = await response.json();
-                        console.log(responseData); // Do something with the responseData
                         if (responseData?.status === 'error' && responseData?.message == "user exists") {
                             const errorMsg = document.createElement('p');
                             errorMsg.innerText = 'User already exists. Try Login!';

@@ -12,8 +12,6 @@ const IMG_CDN_Link = 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_
 export const RestaurantMenu = () => {
     const { id } = useParams();
 
-    console.log(id);
-
     const [restaurant, setRestaurant] = useState([]);
     const [restaurantName, setRestaurantName] = useState('');
     const [restaurantAddress, setRestaurantAddress] = useState('');

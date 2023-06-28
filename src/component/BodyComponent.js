@@ -90,16 +90,13 @@ export const MainBodyComponent = () => {
 
     async function getRestaurants() {
         // To handle errors
-        console.log("entered request")
         try {
             const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.638763&lng=74.8580233&page_type=DESKTOP_WEB_LISTING");
             // });
             if (response.ok) {
                 const json_data = await response.json();
-                console.log(json_data);
                 const fetchedAPIData = json_data?.data?.cards[2]?.data?.data?.cards;
                 setIsFetching(false);
-                console.log(fetchedAPIData);
                 setOriginalRestaurants(fetchedAPIData);//original data fetched from the Swiggy API
                 setRestaurants(fetchedAPIData);
             }

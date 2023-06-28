@@ -30,16 +30,11 @@ const LoginComponent = () => {
             const response = await fetch('https://www.melivecode.com/api/users');
             const users = await response.json();
 
-            console.log(users);
-
             // Finding the user based on the provided email
             const user = users.find((user) => user.username === emailText);
 
             if (user) {
-                console.log('User logged in successfully');
-                console.log(user.email);
-
-                // Updating user context with the logged-in user's information
+                // Updating user context with the logged-in user's information upon successful login
                 setUser({
                     ...user,
                     email: emailText,
