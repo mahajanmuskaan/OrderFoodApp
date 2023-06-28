@@ -30,9 +30,11 @@ export const CarouselComponent = () => {
                             Discover a world of flavor at your fingertips. <br />Welcome to our Foodie's ADDA
                             website,<br /> where deliciousness awaits!
                         </h1>
-                        <button className="sign-up-btn">
-                            <Link to="/restaurant" id='explore-btn'>Let's Explore..</Link>
-                        </button>
+                        <Link to="/restaurant" id='explore-btn'>
+                            <button className="sign-up-btn">
+                                Let's Explore..
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

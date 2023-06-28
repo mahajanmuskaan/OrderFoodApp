@@ -152,7 +152,7 @@ export const SignUpComponent = () => {
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="inputEmail4" className="form-label text-style">Email</label>
-                            <input type="text" className="form-control" id="inputEmail4" value={emailText} onChange={emailChange} />
+                            <input type="email" className="form-control" id="inputEmail4" value={emailText} onChange={emailChange} />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="inputPassword4" className="form-label text-style">Password</label>

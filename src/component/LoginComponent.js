@@ -1,32 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import UserContext from '../utils/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = () => {
+    // State variables to store form input values and error messages
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
     const [error, setError] = useState('');
 
+    // Accessing user context using useContext hook
+    const { user, setUser } = useContext(UserContext);
+
+    // Hook for navigation within the component
+    const navigate = useNavigate();
+
+    // Event handlers for input field changes
     const handleEmailChange = (e) => {
         setEmailText(e.target.value);
     };
-
     const handlePasswordChange = (e) => {
         setPasswordText(e.target.value);
     };
 
+    // Function to handle the login process
     const handleLogin = async () => {
         try {
+            // Fetching users from an API
             const response = await fetch('https://www.melivecode.com/api/users');
             const users = await response.json();
 
             console.log(users);
 
+            // Finding the user based on the provided email
             const user = users.find((user) => user.username === emailText);
 
             if (user) {
                 console.log('User logged in successfully');
-                // Perform any necessary actions after successful login
-                window.location.href = '/';
+                console.log(user.email);
+
+                // Updating user context with the logged-in user's information
+                setUser({
+                    ...user,
+                    email: emailText,
+                });
+
+                // Redirecting to the home page after successful login
+                navigate("/");
             } else {
                 setError('Invalid email or password.');
             }
@@ -35,6 +55,8 @@ const LoginComponent = () => {
             setError('An error occurred during login. Please try again later.');
         }
     };
+
+    // Render the login form
 
     return (
         <>
@@ -48,7 +70,7 @@ const LoginComponent = () => {
                         <div className="form-group">
                             <label htmlFor="inputEmail">Email</label>
                             <input
-                                type="text"
+                                type="email"
                                 className="form-control"
                                 id="inputEmail"
                                 value={emailText}
@@ -72,7 +94,8 @@ const LoginComponent = () => {
                             Login
                         </button>
                     </div>
-                    <h4>Don't have an account?
+                    <h4>
+                        Don't have an account?
                         <Link to="/signup">Sign Up</Link>
                     </h4>
                 </div>

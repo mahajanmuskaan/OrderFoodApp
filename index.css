@@ -3,16 +3,10 @@
     padding: 0;
 }
 
-/* body {
-    background-image: url("./assets/images/food-website.jpg");
-    background-size: cover;
-    background-repeat: repeat;
-} */
-
 /* Header Section */
 
 h1 {
-    font-size: 36px;
+    font-size: 32px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 }
@@ -38,7 +32,7 @@ h4 {
 h5 {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 
@@ -66,10 +60,10 @@ h5 {
 .logoheader>h1 {
     text-align: center;
     color: black;
-    font-size: 1.5rem;
-    padding: 3px;
+    font-size: 1.3rem;
+    padding: 2px;
     font-family: cursive;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .nav-items>ul {
@@ -82,15 +76,15 @@ h5 {
 
 .nav-items>ul>li {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 5px;
     padding: 10px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 
 .nav-items img {
-    width: 25px;
+    width: 22px;
     padding-right: 5px;
     text-align: center;
 }
@@ -99,7 +93,6 @@ h5 {
 .nav-items>ul>li:hover {
     border-bottom: 0.5px solid black;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
 }
 
 /* Home-Page Body Section */
@@ -208,7 +201,7 @@ h5 {
 .search-section {
     margin: 5px;
     padding: 5px;
-    text-align: end;
+    text-align: center;
 }
 
 .search-box {
@@ -644,6 +637,11 @@ h5 {
     text-align: left;
     padding: 2px;
     margin: 2px;
+    font-weight: 500;
+}
+
+.restaurant-menu-items-details h3{
+    font-weight: 600;
 }
 
 .restaurant-menu-items-details .restaurant-menu-img {

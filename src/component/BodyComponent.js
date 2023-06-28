@@ -116,8 +116,6 @@ export const MainBodyComponent = () => {
     return (
         <>
             <div className="restaurant-body-section">
-                <h2>Find Restaurants here...</h2>
-
                 {/* Search Bar */}
                 <div className="search-section">
                     <div className="search-box">
