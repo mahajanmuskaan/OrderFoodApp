@@ -5,7 +5,9 @@ import ShimmerUI from "./Shimmer";
 import { IMG_CDN } from "../config";
 import cuisine from "../../assets/images/cuisine.png";
 import location from "../../assets/images/location.png";
-import star from "../../assets/images/star.png"
+import star from "../../assets/images/star.png";
+import { addItem, removeItem } from "../utils/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const IMG_CDN_Link = 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/'
 
@@ -48,6 +50,22 @@ export const RestaurantMenu = () => {
         }
     }
 
+    const [itemCount, setItemCount] = useState(0);
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        dispatch(addItem(item)); // redux send action object to store {payload : item}
+        setItemCount(itemCount + 1);
+    };
+
+    const handleRemoveItem = (id) => {
+        let updatedCount;
+        dispatch(removeItem(id));
+        updatedCount = itemCount > 0 ? itemCount - 1 : 0;
+        setItemCount(updatedCount);
+    };
+
     return (
         <>
             {restaurant ? (
@@ -57,7 +75,7 @@ export const RestaurantMenu = () => {
                             <h1>{restaurantName}</h1> {/* Render the restaurant name */}
                             <p><img src={location} /> {restauranLocality}, {restaurantAddress}</p> {/* Render the restaurant address */}
                             <p><img src={cuisine} /> {restaurantCuisines && restaurantCuisines.length > 0 ? restaurantCuisines.join(', ') : 'No cuisines available'}</p>
-                            <p id="star-rating"><img src={star} /> { restaurantAvgRating }</p>
+                            <p id="star-rating"><img src={star} /> {restaurantAvgRating}</p>
                         </div>
                         <div className="restaurant-details" >
                             <img src={IMG_CDN_Link + restaurantImg} />
@@ -77,6 +95,10 @@ export const RestaurantMenu = () => {
                                     </div>
                                     <div className="restaurant-menu-items-details" >
                                         <img className="restaurant-menu-img" src={IMG_CDN + item?.card?.info?.imageId} />
+                                        <div className="cart-list">
+                                            <button className="btn btn-outline-danger btn-lg" onClick={() => { handleRemoveItem(item) }}>-</button>
+                                            <button className="btn btn-outline-danger" onClick={() => { handleAddItem(item) }}>+</button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

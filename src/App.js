@@ -1,6 +1,6 @@
-import React, { lazy, Suspense, useContext, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, Outlet, RouterProvider, Link } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import HeaderComponent from "./component/HeaderComponent";
 import MainBodyComponent from "./component/BodyComponent";
 import FooterComponent from "./component/FooterComponent";
@@ -13,6 +13,8 @@ import useOnline from "./utils/useOnline";
 import ShimmerUI from "./component/Shimmer";
 import Help from "./component/Help";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 // Lazy Loading of Food Mart Component
 const FoodMartComponent = lazy(() => import("./component/FoodMartComponent"));
@@ -29,6 +31,7 @@ const AppLayout = () => {
 
     // Using Custom Hook to check the internet connectivity
     const isOnline = useOnline();
+    
     const [user, setUser] = useState({
         email: "",
     });
@@ -45,11 +48,13 @@ const AppLayout = () => {
     // Render the app layout with header, outlet, and footer components
     return (
         <>
-            <UserContext.Provider value={{ user: user, setUser: setUser }}>
-                <HeaderComponent />
-                <Outlet />
-                <FooterComponent />
-            </UserContext.Provider>
+            <Provider store={store}>
+                <UserContext.Provider value={{ user: user, setUser: setUser }}>
+                    <HeaderComponent />
+                    <Outlet />
+                    <FooterComponent />
+                </UserContext.Provider>
+            </Provider>
         </>
     );
 };

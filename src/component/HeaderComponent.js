@@ -9,6 +9,7 @@ import enter from '../../assets/images/enter.png';
 import logout from '../../assets/images/logout.png';
 import help from '../../assets/images/help.png';
 import mart from '../../assets/images/mart.png';
+import { useSelector } from 'react-redux';
 
 // CSS style for links
 const style = {
@@ -26,6 +27,8 @@ const HeaderComponent = () => {
             email: '',
         });
     };
+
+    const cartItems = useSelector(store => store.cart.items);
 
     // Render the header component
     return (
@@ -63,7 +66,7 @@ const HeaderComponent = () => {
                         </Link>
                     </li>
                     <li>
-                        <img src={cart} />Cart
+                        <img src={cart} />{cartItems.length}
                     </li>
                     {user.email !== '' ? (
                         <li onClick={logOutUser}>
