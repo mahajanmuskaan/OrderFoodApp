@@ -48,6 +48,9 @@ The app consists of the following components:
 
 - FooterComponent: Represents the footer section of the app.
 
+## API
+The app uses Swiggy's public API to fetch restaurant and menu data. Please refer to their API documentation for more information.
+
 ## Conclusion
 
 Foodie's ADDA is a feature-rich online Food Ordering App that provides users with a seamless experience to browse and order food from various restaurants. It leverages the power of React and Redux Toolkit to handle state management efficiently. Feel free to explore and enhance the app based on your requirements. Enjoy your food ordering experience with Foodie's ADDA!
