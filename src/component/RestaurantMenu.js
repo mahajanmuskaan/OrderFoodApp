@@ -2,18 +2,16 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import React from 'react';
 import ShimmerUI from "./Shimmer";
-import { IMG_CDN } from "../config";
+import { IMG_CDN, IMG_CDN_Link } from "../config";
 import cuisine from "../../assets/images/cuisine.png";
 import location from "../../assets/images/location.png";
 import star from "../../assets/images/star.png";
-import { addItem, removeItem } from "../utils/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
-
-const IMG_CDN_Link = 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/'
+import CartList from "./CartList";
 
 export const RestaurantMenu = () => {
     const { id } = useParams();
 
+    // State variables
     const [restaurant, setRestaurant] = useState([]);
     const [restaurantName, setRestaurantName] = useState('');
     const [restaurantAddress, setRestaurantAddress] = useState('');
@@ -22,10 +20,13 @@ export const RestaurantMenu = () => {
     const [restaurantImg, setRestaurantImg] = useState('');
     const [restaurantId, setRestaurantId] = useState('');
     const [restaurantAvgRating, setRestaurantAvgRating] = useState('');
+
+    // Fetch restaurant menu data on component mount
     useEffect(() => {
         getRestaurantMenu();
     }, []);
 
+    // Function to fetch restaurant menu data
     async function getRestaurantMenu() {
         try {
             const response = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=31.638763&lng=74.8580233&restaurantId=${id}`);
@@ -34,6 +35,8 @@ export const RestaurantMenu = () => {
                 const json_data = await response.json();
                 const restaurant_json = json_data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
                 const restaurant_detail = json_data?.data?.cards[0].card.card.info;
+
+                // Update state variables with fetched data
                 setRestaurant(restaurant_json);
                 setRestaurantName(restaurant_detail.name); // Extract the name from the response
                 setRestaurantAddress(restaurant_detail.city); // Extract the address from the response
@@ -50,22 +53,6 @@ export const RestaurantMenu = () => {
         }
     }
 
-    const [itemCount, setItemCount] = useState(0);
-
-    const dispatch = useDispatch();
-
-    const handleAddItem = (item) => {
-        dispatch(addItem(item)); // redux send action object to store {payload : item}
-        setItemCount(itemCount + 1);
-    };
-
-    const handleRemoveItem = (id) => {
-        let updatedCount;
-        dispatch(removeItem(id));
-        updatedCount = itemCount > 0 ? itemCount - 1 : 0;
-        setItemCount(updatedCount);
-    };
-
     return (
         <>
             {restaurant ? (
@@ -80,7 +67,6 @@ export const RestaurantMenu = () => {
                         <div className="restaurant-details" >
                             <img src={IMG_CDN_Link + restaurantImg} />
                         </div>
-
                     </div>
                     <hr></hr>
                     <h2>Restaurant Menu</h2>
@@ -95,19 +81,15 @@ export const RestaurantMenu = () => {
                                     </div>
                                     <div className="restaurant-menu-items-details" >
                                         <img className="restaurant-menu-img" src={IMG_CDN + item?.card?.info?.imageId} />
-                                        <div className="cart-list">
-                                            <button className="btn btn-outline-danger btn-lg" onClick={() => { handleRemoveItem(item) }}>-</button>
-                                            <button className="btn btn-outline-danger" onClick={() => { handleAddItem(item) }}>+</button>
-                                        </div>
+                                        <CartList {...item} key={item.id} />
                                     </div>
                                 </div>
                             ))}
                         </ul>
                     </div>
-
                 </div>
             ) : (
-                <ShimmerUI />
+                <ShimmerUI /> // Render a loading skeleton if restaurant data is not available
             )}
         </>
     );

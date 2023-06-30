@@ -30,6 +30,7 @@ const HeaderComponent = () => {
 
     const cartItems = useSelector(store => store.cart.items);
 
+
     // Render the header component
     return (
         <div className="header">
@@ -66,7 +67,10 @@ const HeaderComponent = () => {
                         </Link>
                     </li>
                     <li>
-                        <img src={cart} />{cartItems.length}
+                        <img src={cart} />
+                        <Link to="/cart" style={style}>
+                            {cartItems.length}
+                        </Link>
                     </li>
                     {user.email !== '' ? (
                         <li onClick={logOutUser}>

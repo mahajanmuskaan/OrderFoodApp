@@ -241,8 +241,8 @@ h5 {
 
 .restaurant-list-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 0.2fr));
-    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 0.3fr));
+    gap: 1.5rem;
     margin: 1rem;
 }
 
@@ -491,8 +491,8 @@ h4 {
 
 .modal-box {
     position: absolute;
-    top: 30%;
-    bottom: 5%;
+    top: 20%;
+    bottom: 20%;
     left: 15%;
     right: 15%;
     border-radius: 15px;
@@ -521,9 +521,8 @@ button {
     color: white;
 }
 
-#signed-ok {
-    text-decoration: none;
-    color: black;
+.modal-box>p {
+    text-align: center;
 }
 
 /* Error Component Section */
@@ -649,7 +648,7 @@ h5 {
 }
 
 .food-mart-section img {
-    height: 350px;
+    min-height: 350px;
     object-fit: contain;
     border: 0.5px solid #e9ebee;
     box-shadow: #e9ebee;
@@ -711,36 +710,58 @@ h5 {
     flex-direction: row;
     list-style: none;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .cart-list li {
     cursor: pointer;
 }
 
-
-
-@media only screen and (max-width: 768px) {
-    .box-form {
-        border: 1px solid black;
-        background-color: white;
-        margin: auto;
-        padding: 10px;
-        max-width: 80%;
-        border-radius: 10px;
-    }
+.cart-display {
+    text-align: center;
+    margin: 0.5rem;
+    padding: 0.5rem;
 }
 
-@media (max-width: 480px) {
-    .modal-box {
-        top: 5%;
-        bottom: 5%;
-        left: 5%;
-        right: 5%;
-        max-width: 80%;
-        border: 1px solid black;
-        background-color: crimson;
-        background-image: none;
-        text-align: center;
-        color: white;
-    }
+.cart-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cart-text,
+.cart-empty {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+
+}
+
+.cart-empty {
+    width: 650px;
+    min-height: 500px;
+}
+
+.checkout-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    padding: 1rem;
+}
+
+.checkout-section>h1,
+p {
+    text-align: left;
+}
+
+.cart-restaurant-link {
+    text-align: center;
+}
+
+.visibility-heading{
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
 }

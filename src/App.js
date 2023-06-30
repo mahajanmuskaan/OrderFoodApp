@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import HeaderComponent from "./component/HeaderComponent";
@@ -12,6 +12,8 @@ import LoginComponent from "./component/LoginComponent";
 import useOnline from "./utils/useOnline";
 import ShimmerUI from "./component/Shimmer";
 import Help from "./component/Help";
+import Cart from "./component/Cart";
+import VisibilityMode from "./component/VisibilityMode";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
@@ -28,13 +30,33 @@ const style = {
 }
 
 const AppLayout = () => {
-
     // Using Custom Hook to check the internet connectivity
     const isOnline = useOnline();
-    
     const [user, setUser] = useState({
         email: "",
     });
+    const [isDesktopMode, setIsDesktopMode] = useState(true);
+
+    useEffect(() => {
+        // Function to handle media query change
+        const handleMediaQueryChange = (event) => {
+            setIsDesktopMode(event.matches);
+        };
+
+        // Create a media query to check for desktop mode
+        const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+        // Add event listener for media query change
+        mediaQuery.addListener(handleMediaQueryChange);
+
+        // Set initial value for isDesktopMode
+        setIsDesktopMode(mediaQuery.matches);
+
+        // Clean up the event listener when component is unmounted
+        return () => {
+            mediaQuery.removeListener(handleMediaQueryChange);
+        };
+    }, []);
 
     // Render an offline message if the user is offline
     if (!isOnline) {
@@ -48,13 +70,21 @@ const AppLayout = () => {
     // Render the app layout with header, outlet, and footer components
     return (
         <>
-            <Provider store={store}>
-                <UserContext.Provider value={{ user: user, setUser: setUser }}>
-                    <HeaderComponent />
-                    <Outlet />
-                    <FooterComponent />
-                </UserContext.Provider>
-            </Provider>
+            {isDesktopMode ? (
+                <>
+                    <Provider store={store}>
+                        <UserContext.Provider value={{ user: user, setUser: setUser }}>
+                            <HeaderComponent />
+                            <Outlet />
+                            <FooterComponent />
+                        </UserContext.Provider>
+                    </Provider>
+                </>
+            ) : (
+                <>
+                    <VisibilityMode />
+                </>
+            )}
         </>
     );
 };
@@ -103,6 +133,11 @@ const appRouter = createBrowserRouter([
             {
                 path: '/restaurant-menu/:id',
                 element: <RestaurantMenu />,
+                errorElement: <Error />
+            },
+            {
+                path: "/cart",
+                element: <Cart />,
                 errorElement: <Error />
             },
 
