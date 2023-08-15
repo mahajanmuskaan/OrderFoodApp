@@ -55,7 +55,7 @@ export const MainBodyComponent = () => {
     // FilterOption- Search based on cuisines
     function filterOptions(filterBy) {
         return originalrestaurants.filter((restaurant) => {
-            return restaurant.data.cuisines.some((cuisine) =>
+            return restaurant.info.cuisines.some((cuisine) =>
                 cuisine.toLowerCase().includes(filterBy.toLowerCase())
             );
         });
@@ -91,11 +91,11 @@ export const MainBodyComponent = () => {
     async function getRestaurants() {
         // To handle errors
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.638763&lng=74.8580233&page_type=DESKTOP_WEB_LISTING");
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.6339793&lng=74.8722642&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             // });
             if (response.ok) {
                 const json_data = await response.json();
-                const fetchedAPIData = json_data?.data?.cards[2]?.data?.data?.cards;
+                const fetchedAPIData = json_data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
                 setIsFetching(false);
                 setOriginalRestaurants(fetchedAPIData);//original data fetched from the Swiggy API
                 setRestaurants(fetchedAPIData);
@@ -168,7 +168,7 @@ export const MainBodyComponent = () => {
                         </div>) : (<div className="restaurant-list">
                             <div className="restaurant-list-cards">
                                 {restaurants.map((restaurant) => (
-                                    <Restaurant {...restaurant.data} key={restaurant.data.id} />
+                                    <Restaurant {...restaurant.info} key={restaurant.info.id} />
                                 ))}
                             </div>
                         </div>)
